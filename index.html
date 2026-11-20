@@ -1,0 +1,2113 @@
+<!doctype html>
+<html lang="or">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ତାରା ଏବଂ ନକ୍ଷତ୍ରମଣ୍ଡଳ (Stars and Constellations)</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#12154a;--bg2:#0a0d2e;--tx:#f1f3ff;--mu:#b6bcec;--gl:rgba(255,255,255,.09);--ln:rgba(255,255,255,.2);--ok:#7dffb5;--g1:#7a5cff;--g2:#ff5fa2;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1140;--bg2:#070921}}
+:root[data-theme="dark"]{--bg:#0e1140;--bg2:#070921}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}[hidden]{display:none!important}
+body{margin:0;color:var(--tx);font:400 15px/1.6 "Noto Sans Oriya",system-ui,-apple-system,"Segoe UI",sans-serif;background:radial-gradient(1px 1px at 12% 18%,#fff8,transparent),radial-gradient(1.5px 1.5px at 70% 8%,#fff9,transparent),radial-gradient(1px 1px at 40% 60%,#fff6,transparent),radial-gradient(1.5px 1.5px at 88% 75%,#fff8,transparent),radial-gradient(120% 80% at 50% 0,var(--bg),var(--bg2)) fixed}
+.wrap {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 16px 24px 30px;
+}
+.hero{display:flex;align-items:center;gap:12px;margin:4px 0 12px}
+.logo{font-size:38px;animation:fl 4s ease-in-out infinite}
+h1{font-size:22px;line-height:1.35;margin:0;font-weight:700;background:linear-gradient(90deg,#ffd479,#ff8fc8,#7fd6ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{margin:0;color:var(--mu);font-size:13px}
+.score{margin-left:auto;text-align:center;font-size:12px;color:var(--mu);white-space:nowrap}.score b{display:block;font-size:20px;letter-spacing:2px}
+button{font:inherit;color:var(--tx);background:var(--gl);border:1px solid var(--ln);border-radius:999px;padding:7px 14px;cursor:pointer;transition:transform .12s,background .12s}
+button:hover{transform:translateY(-2px);background:rgba(255,255,255,.16)}
+button:focus-visible,input:focus-visible{outline:2px solid #ffd479;outline-offset:2px}
+
+/* ===== PROFESSIONAL MISSION NAVIGATION ===== */
+
+.tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  margin: 0;
+}
+
+.tabs button {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 98px;
+  padding: 16px 12px;
+
+  text-align: center;
+  line-height: 1.4;
+
+  background: linear-gradient(
+    145deg,
+    rgba(32, 44, 93, 0.95),
+    rgba(16, 25, 62, 0.98)
+  );
+
+  border: 1px solid rgba(155, 185, 240, 0.28);
+  border-radius: 16px;
+
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.15);
+  transition: background 0.2s, border-color 0.2s;
+}
+
+/* Watermark behind the text */
+.tabs button::before {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  font-size: 76px;
+  line-height: 1;
+  opacity: 0.10;
+
+  z-index: -1;
+  pointer-events: none;
+}
+
+.tabs button:nth-child(1)::before {
+  content: "🧭";
+}
+
+.tabs button:nth-child(2)::before {
+  content: "⭐";
+}
+
+.tabs button:nth-child(3)::before {
+  content: "✨";
+}
+
+/* Odia mission title */
+.tabs button b {
+  position: relative;
+  z-index: 1;
+
+  color: #f7f9ff;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* English subtitle */
+.tabs button small {
+  position: relative;
+  z-index: 1;
+
+  color: #b9c9e9;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+/* Active mission */
+.tabs button[aria-pressed="true"] {
+  background: linear-gradient(
+    145deg,
+    #30477e,
+    #253564
+  );
+
+  border-color: #98baff;
+  box-shadow:
+    0 0 20px rgba(107, 151, 255, 0.22),
+    inset 0 1px 0 rgba(255,255,255,0.10);
+}
+
+.tabs button[aria-pressed="true"] small {
+  color: #dce8ff;
+}
+
+/* Keep constellation selection styling */
+#consRow button[aria-pressed="true"] {
+  background: linear-gradient(
+    135deg, var(--g1), var(--g2)
+  );
+  border-color: transparent;
+}
+
+/* Mobile layout */
+@media (max-width: 600px) {
+  .tabs {
+    gap: 8px;
+  }
+
+  .tabs button {
+    min-height: 100px;
+    padding: 10px 6px;
+    border-radius: 12px;
+  }
+
+  .tabs button::before {
+    font-size: 56px;
+  }
+
+  .tabs button b {
+    font-size: 12px;
+  }
+
+  .tabs button small {
+    font-size: 10px;
+  }
+}
+
+/* ===== END MISSION NAVIGATION ===== */
+
+.stage{position:relative;border-radius:20px;overflow:hidden;border:1px solid var(--ln);box-shadow:0 10px 40px #0008,0 0 60px #6a4cff33;background:#050824}
+canvas{display:block;width:100%;touch-action:none;cursor:crosshair}
+.intro{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:22px;text-align:center;background:radial-gradient(circle at 50% 30%,#2a1f6dee,#050824f2)}
+.intro .ship{font-size:64px;animation:fl 3s ease-in-out infinite}
+.intro p{margin:0;max-width:560px;font-size:18px}.intro small{display:block;color:var(--mu);font-size:13px;margin-top:6px}
+.intro button{background:linear-gradient(135deg,#ffd479,#ff8fc8);color:#1a1450;font-weight:700;font-size:17px;border:0;padding:10px 26px;box-shadow:0 0 24px #ffd47999}
+.guide{display:flex;gap:12px;align-items:flex-start;margin-top:14px}
+.av{flex:none;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;font-size:32px;background:linear-gradient(135deg,var(--g1),var(--g2));box-shadow:0 0 20px #ff5fa266;animation:fl 3.5s ease-in-out infinite}
+.bubble{position:relative;flex:1;background:var(--gl);border:1px solid var(--ln);border-radius:18px;padding:12px 16px;backdrop-filter:blur(6px)}
+.bubble::before{content:"";position:absolute;left:-8px;top:20px;width:14px;height:14px;background:inherit;border-left:1px solid var(--ln);border-bottom:1px solid var(--ln);transform:rotate(45deg)}
+.task{font-weight:700;margin:0}#msg{min-height:24px;margin:6px 0 0}#msg.ok{color:var(--ok);font-weight:700}
+.ctl{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:10px 0 0}
+.ctl input[type=range]{flex:1 1 180px;min-width:120px;accent-color:#ff8fc8;height:28px}
+.chk{display:flex;align-items:center;gap:6px;font-size:14px}
+.panel{margin-top:10px;background:var(--gl);border:1px solid var(--ln);border-radius:18px;padding:4px 16px 14px}
+#info{margin:12px 0 0;color:var(--mu);font-size:14px}
+@keyframes fl{50%{transform:translateY(-6px)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+
+
+
+/* ===== FULL-SCREEN FLOATING OBSERVATORY DASHBOARD ===== */
+.wrap {
+  display:block;
+  max-width: none;
+  width:100%;
+  margin:0;
+  padding:12px;
+}
+.observatory-dashboard {
+  position:relative;
+  isolation:isolate;
+  width:100%;
+  height: min(900px, calc(100dvh - 24px));
+  min-height:650px;
+  overflow:hidden;
+  border:1px solid rgba(145,180,238,.28);
+  border-radius:20px;
+  background:#08112d;
+  box-shadow:0 18px 55px rgba(0,0,0,.35);
+}
+/* The night sky fills the dashboard. Controls float ABOVE it. */
+.observatory-dashboard .stage {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  margin:0;
+  border:0;
+  border-radius:0;
+  box-shadow:none;
+  z-index:0;
+}
+.observatory-dashboard #c {width:100%;height:100%;display:block;}
+.observatory-dashboard .hero,
+.observatory-dashboard .tabs,
+.observatory-dashboard .panel,
+.observatory-dashboard .guide {
+  position:absolute;
+  z-index:2;
+  margin:0;
+  background:rgba(11,24,54,.91);
+  border:1px solid rgba(145,185,242,.35);
+  border-radius:12px;
+  box-shadow:0 7px 25px rgba(0,0,0,.3);
+  backdrop-filter:blur(12px);
+}
+/* Small floating observatory identity + score at top-right */
+.observatory-dashboard .hero {
+  top:16px;
+  right:16px;
+  width:min(360px,calc(100% - 280px));
+  min-width:225px;
+  min-height:58px;
+  padding:9px 13px;
+  gap:9px;
+  align-items:center;
+}
+.observatory-dashboard .logo {font-size:24px;}
+.observatory-dashboard h1 {font-size:15px;line-height:1.3;}
+.observatory-dashboard .sub {font-size:10px;line-height:1.3;}
+.observatory-dashboard .score {font-size:10px;}
+.observatory-dashboard .score b {font-size:16px;}
+/* Compact mission panel, left top */
+.observatory-dashboard .tabs {
+  top:16px;
+  left:16px;
+  width:236px;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  padding:31px 9px 9px;
+}
+.observatory-dashboard .tabs::before {
+  content:'EXPLORE';
+  position:absolute;
+  top:9px;
+  left:13px;
+  color:#a9c4eb;
+  font:700 11px/1.2 system-ui,sans-serif;
+  letter-spacing:1.1px;
+}
+.observatory-dashboard .tabs button {
+  width:100%;
+  min-height:44px;
+  padding:6px 11px;
+  border-radius:7px;
+  align-items:flex-start;
+  text-align:left;
+  flex:none;
+}
+.observatory-dashboard .tabs button b {font-size:13px;}
+.observatory-dashboard .tabs button small {font-size:10px;margin-top:0;}
+.observatory-dashboard .tabs button::before {
+  font-size:42px;
+  opacity:.055;
+}
+/* Compact controls, left bottom */
+.observatory-dashboard .panel {
+  left:16px;
+  bottom:78px;
+  width:236px;
+  max-height:calc(100% - 247px);
+  overflow:auto;
+  padding:12px;
+}
+.observatory-dashboard .panel .ctl {
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+  gap:8px;
+  margin:0 0 9px;
+}
+.observatory-dashboard .panel .ctl button {
+  width:100%;
+  border-radius:8px;
+  font-size:12px;
+  padding:7px 9px;
+  text-align:left;
+}
+.observatory-dashboard .panel .chk {font-size:12px;}
+.observatory-dashboard .panel .ctl input[type=range] {
+  min-width:0;
+  width:100%;
+  flex:0 0 auto;
+}
+.observatory-dashboard .panel #info {
+  margin:7px 0 0;
+  font-size:11px;
+  line-height:1.45;
+}
+/* Floating teacher guidance, bottom-right */
+.observatory-dashboard .guide {
+  left:auto;
+  right:18px;
+  bottom:75px;
+  width:min(390px,calc(100% - 300px));
+  max-height:165px;
+  overflow-y:auto;
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  min-height:60px;
+  padding:12px 14px;
+}
+.observatory-dashboard .guide .av {
+  width:37px;
+  height:37px;
+  font-size:22px;
+}
+.observatory-dashboard .guide .bubble {
+  flex:1;
+  padding:0;
+  background:none;
+  border:0;
+  border-radius:0;
+  box-shadow:none;
+  backdrop-filter:none;
+}
+.observatory-dashboard .guide .bubble::before {display:none;}
+.observatory-dashboard .guide .task {
+  font-size:12px;
+  line-height:1.45;
+}
+.observatory-dashboard .guide #msg {font-size:11px;min-height:0;}
+/* Tablet & small-screen stacking; sky stays usable. */
+@media (max-width:800px) {
+  .wrap {padding:6px;}
+  .observatory-dashboard {height:calc(100dvh - 12px);min-height:650px;border-radius:12px;}
+  .observatory-dashboard .hero {
+    top:10px;right:10px;
+    width:calc(100% - 192px);
+    min-width:0;
+    padding:7px;
+  }
+  .observatory-dashboard h1 {font-size:12px;}
+  .observatory-dashboard .hero .sub {display:none;}
+  .observatory-dashboard .tabs {top:10px;left:10px;width:172px;padding:28px 6px 6px;}
+  .observatory-dashboard .tabs button {min-height:43px;padding:5px 7px;}
+  .observatory-dashboard .tabs button b {font-size:11px;}
+  .observatory-dashboard .tabs button small {font-size:9px;}
+  .observatory-dashboard .panel {left:10px;bottom:88px;width:172px;max-height:32%;}
+  .observatory-dashboard .guide {left:10px;right:10px;bottom:10px;width:auto;max-height:145px;min-height:72px;}
+}
+/* ===== END FULL-SCREEN FLOATING OBSERVATORY DASHBOARD ===== */
+
+
+/* ===== MOVABLE OBSERVATORY PANELS — CLOSE ONLY ===== */
+.observatory-dashboard .float-panel { touch-action:pan-y; }
+.observatory-dashboard .float-panel.is-moving { cursor:grabbing; user-select:none; }
+.observatory-dashboard .float-close {
+  position:absolute; top:6px; right:7px; z-index:10;
+  display:grid; place-items:center; width:25px; height:25px;
+  padding:0; border-radius:7px;
+  border:1px solid rgba(149,188,241,.22);
+  background:rgba(20,36,71,.78); color:#c8d8f5;
+  font:600 19px/1 system-ui,sans-serif; cursor:pointer;
+}
+.observatory-dashboard .float-close:hover {background:#69314d;color:#fff;transform:none;}
+/* A visually quiet header strip is the drag surface; no drag button. */
+.observatory-dashboard .tabs { padding-top:34px; }
+.observatory-dashboard .panel { padding-top:39px; }
+.observatory-dashboard .guide { padding-top:37px; }
+.observatory-dashboard .hero { padding-right:42px; }
+.observatory-dashboard .float-panel:not(.hero):not(.guide):not(.tabs) { cursor:default; }
+.observatory-dashboard .float-panel[hidden] {display:none!important;}
+.panel-restore {position:absolute;z-index:30;top:16px;left:50%;transform:translateX(-50%);font:600 12px system-ui,sans-serif;border-radius:9px;padding:7px 12px;background:rgba(13,28,58,.96);border:1px solid #5776a4;color:#e5edff;}
+.panel-restore:hover {transform:translateX(-50%);}
+.panel-restore-menu {position:absolute;z-index:31;top:55px;left:50%;transform:translateX(-50%);min-width:190px;padding:7px;background:#0c1a38;border:1px solid #55729e;border-radius:10px;box-shadow:0 12px 35px #0008;}
+.panel-restore-menu button {display:block;width:100%;text-align:left;font-size:12px;padding:8px 10px;border-radius:6px;margin:2px 0;}
+.panel-restore-menu[hidden] {display:none!important;}
+@media(max-width:800px){.observatory-dashboard .guide{padding-top:35px;}}
+/* Prevent mission-button CSS from enlarging the close control. */
+.observatory-dashboard .tabs button.float-close {
+  position:absolute; display:grid; place-items:center;
+  top:6px; right:7px; width:25px; min-height:25px; height:25px;
+  padding:0; margin:0; border-radius:7px;
+  text-align:center; line-height:1; flex:none; align-items:center;
+}
+.observatory-dashboard .tabs button.float-close::before {content:none;}
+/* ===== END MOVABLE OBSERVATORY PANELS ===== */
+
+
+/* ===== COMPACT PANEL CONTROLS / LEFT MENU ===== */
+.panel-restore,
+.panel-restore:hover {
+  position:absolute;
+  z-index:40;
+  left:17px;
+  top:16px;
+  right:auto;
+  transform:none;
+  padding:8px 13px;
+  border-radius:9px;
+  font:600 12px/1.3 system-ui,sans-serif;
+  background:rgba(13,28,58,.96);
+  border:1px solid #5776a4;
+  color:#e5edff;
+}
+.panel-restore-menu {
+  position:absolute;
+  z-index:41;
+  left:17px;
+  top:56px;
+  right:auto;
+  transform:none;
+  min-width:208px;
+}
+.panel-restore-menu button[aria-pressed="true"]{color:#a6dcff;}
+/* Make room for the always-visible panel switcher. */
+.observatory-dashboard .tabs:not([style*="top:"]) {top:65px;}
+/* Compact quiet X in every floating panel, including EXPLORE. */
+.observatory-dashboard .float-close,
+.observatory-dashboard .tabs button.float-close {
+  position:absolute;
+  top:7px;
+  right:7px;
+  width:21px;
+  height:21px;
+  min-height:21px;
+  padding:0;
+  margin:0;
+  display:grid;
+  place-items:center;
+  border-radius:6px;
+  flex:none;
+  font:600 15px/1 system-ui,sans-serif;
+  text-align:center;
+  background:rgba(18,31,63,.95);
+  border:1px solid rgba(149,188,241,.22);
+  box-shadow:none;
+  color:#c3d3ef;
+}
+.observatory-dashboard .tabs button.float-close::before {content:none;}
+.observatory-dashboard .float-close:hover,
+.observatory-dashboard .tabs button.float-close:hover {
+  background:#7e354c;
+  color:white;
+  transform:none;
+}
+@media (max-width:800px){
+  .panel-restore,.panel-restore:hover {top:9px;left:10px;}
+  .panel-restore-menu{top:49px;left:10px;}
+  .observatory-dashboard .tabs:not([style*="top:"]){top:60px;}
+}
+/* ===== END COMPACT PANEL CONTROLS ===== */
+
+/* ===== HIDE CONTROL PANEL SCROLLBAR ===== */
+
+.observatory-dashboard .panel {
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.observatory-dashboard .panel::-webkit-scrollbar {
+  display: none;
+}
+
+/* ===== END SCROLLBAR FIX ===== */
+
+/* ===== CLEAN FIRST PAGE / LARGER INTRO COPY ===== */
+.observatory-dashboard .intro {
+  padding: 32px 26px;
+  gap: 17px;
+  z-index: 3;
+}
+.observatory-dashboard .intro .ship {font-size: 72px;}
+.observatory-dashboard .intro p {
+  max-width: 760px;
+  font-size: clamp(19px, 2vw, 26px);
+  line-height: 1.75;
+  font-weight: 600;
+}
+.observatory-dashboard .intro small {
+  max-width: 720px;
+  margin: 12px auto 0;
+  font-size: clamp(14px, 1.25vw, 17px);
+  line-height: 1.7;
+  font-weight: 400;
+}
+.observatory-dashboard .intro button {
+  font-size: 19px;
+  padding: 12px 32px;
+}
+@media (max-width: 600px) {
+  .observatory-dashboard .intro p {font-size: 19px;}
+  .observatory-dashboard .intro small {font-size: 14px;}
+  .observatory-dashboard .intro .ship {font-size: 62px;}
+}
+/* ===== END CLEAN FIRST PAGE ===== */
+
+/* Android 9 / older WebView: `inset` shorthand may be ignored. */
+.observatory-dashboard .intro {
+  top:0; right:0; bottom:0; left:0;
+  width:100%; height:100%;
+  z-index:4;
+  background:#090e30;
+  background:radial-gradient(circle at 50% 30%,#2a1f6d,#050824 85%);
+}
+.observatory-dashboard .intro[hidden] {display:none!important;}
+/* Allow the intro to fit shorter smart-class displays without clipping. */
+@media(max-height:650px) {
+  .observatory-dashboard .intro {overflow-y:auto;justify-content:safe center;}
+  .observatory-dashboard .intro p {font-size:17px;line-height:1.5;}
+}
+/* Avoid expensive blur compositing on the lower-power Android device. */
+.low-power-observatory .observatory-dashboard .hero,
+.low-power-observatory .observatory-dashboard .tabs,
+.low-power-observatory .observatory-dashboard .panel,
+.low-power-observatory .observatory-dashboard .guide {backdrop-filter:none;-webkit-backdrop-filter:none;}
+/* ===== Legacy CSS fallbacks (modern declarations above remain authoritative) ===== */
+.observatory-dashboard { height: calc(100vh - 24px); }
+@supports (height: min(900px, 100vh)) { .observatory-dashboard { height: min(900px, calc(100vh - 24px)); } }
+.observatory-dashboard .stage { top:0; right:0; bottom:0; left:0; }
+.observatory-dashboard .hero { width: calc(100% - 280px); }
+.observatory-dashboard .guide { width:390px; max-width:calc(100% - 300px); }
+@supports (width: min(390px, 50%)) {
+  .observatory-dashboard .guide { width:min(390px, calc(100% - 300px)); }
+}
+@media (max-width:800px) {
+  .observatory-dashboard { height: calc(100vh - 12px); }
+  .observatory-dashboard .hero { width: calc(100% - 192px); }
+  .observatory-dashboard .guide { width:auto; max-width:none; }
+}
+.observatory-dashboard .intro p { font-size: 19px; }
+body { background-color:#0a0d2e; }
+.no-flex-gap .hero > * + * { margin-left:12px; }
+.no-flex-gap .tabs > * + * { margin-top:8px; }
+.no-flex-gap .observatory-dashboard .tabs > * + * { margin-top:6px; }
+.no-flex-gap .guide > * + * { margin-left:12px; }
+.no-flex-gap .observatory-dashboard .guide > * + * { margin-left:10px; }
+.no-flex-gap .ctl > * + * { margin-left:10px; }
+.no-flex-gap .observatory-dashboard .panel .ctl > * + * { margin-top:8px; margin-left:0; }
+.no-flex-gap .chk > * + * { margin-left:6px; }
+.av, .float-close, .panel-restore-menu { display:flex; align-items:center; justify-content:center; }
+.panel-restore-menu { display:block; }
+
+
+/* Lightweight sky navigation: no WebGL, Android 9 WebView compatible. */
+.sky-nav{position:absolute;z-index:4;bottom:15px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:7px;padding:7px;background:rgba(9,22,51,.92);border:1px solid rgba(145,185,242,.4);border-radius:12px;box-shadow:0 6px 22px #0008;font:600 12px Arial,sans-serif;color:#fff;white-space:nowrap}
+.sky-nav[hidden]{display:none!important}
+.sky-nav button{height:36px;min-width:39px;padding:4px 9px;border-radius:8px;background:#263e73;font:700 18px Arial,sans-serif;color:#fff;touch-action:manipulation}
+.sky-nav .sky-reset{font-size:12px;min-width:75px}
+.sky-nav .sky-value{min-width:42px;text-align:center;font:600 12px Arial,sans-serif}
+.observatory-dashboard #c{touch-action:none;cursor:grab}
+.observatory-dashboard #c.sky-panning{cursor:grabbing}
+@media(max-width:600px){.sky-nav{bottom:10px;padding:4px;gap:4px}.sky-nav button{height:33px;min-width:32px}.sky-nav .sky-reset{min-width:57px}}
+/* Zoom: floating, dismissible panel at top right (Android 9 compatible). */
+.observatory-dashboard .sky-nav {
+  position:absolute;
+  top:16px;
+  right:16px;
+  bottom:auto;
+  left:auto;
+  transform:none;
+  width:232px;
+  min-height:84px;
+  padding:35px 9px 9px;
+  z-index:4;
+  flex-wrap:nowrap;
+  justify-content:space-between;
+  gap:5px;
+  touch-action:pan-y;
+}
+.observatory-dashboard .sky-nav::before {
+  content:'ZOOM';
+  position:absolute;
+  top:10px;
+  left:12px;
+  font:700 11px/1.2 Arial,sans-serif;
+  letter-spacing:1px;
+  color:#b7d0f8;
+  pointer-events:none;
+}
+.observatory-dashboard .sky-nav .float-close {
+  position:absolute;
+  top:6px;
+  right:7px;
+  width:21px;
+  height:21px;
+  min-width:21px;
+  padding:0;
+  font:600 15px/1 Arial,sans-serif;
+  background:rgba(18,31,63,.95);
+  touch-action:manipulation;
+}
+.observatory-dashboard .sky-nav .sky-reset {min-width:65px;font-size:11px;}
+/* Avoid overlap when the optional title panel is restored. */
+.observatory-dashboard .hero:not([style*="top:"]) {top:112px;}
+@media (max-width:800px) {
+  .observatory-dashboard .sky-nav {top:10px;right:10px;width:212px;padding:33px 7px 7px;}
+  .observatory-dashboard .hero:not([style*="top:"]) {top:103px;}
+}
+@media (max-width:400px) {
+  .observatory-dashboard .sky-nav {width:192px;gap:3px;}
+  .observatory-dashboard .sky-nav button {min-width:29px;padding:3px 6px;}
+  .observatory-dashboard .sky-nav .sky-reset {min-width:58px;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="observatory-dashboard">
+<div class="hero"><div class="logo">🌌</div><div><h1>ତାରା ଏବଂ ନକ୍ଷତ୍ରମଣ୍ଡଳ</h1><p class="sub">ଶ୍ରେଣୀ ଷଷ୍ଠ ବିଜ୍ଞାନ, ଅଧ୍ୟାୟ 12 (Class 6 Science, Chapter 12: Our Universe)</p></div><div class="score">ମିଶନ୍ (Missions)<b id="score">☆☆☆</b></div></div>
+<div class="tabs" id="tabs" role="group" aria-label="Missions"></div>
+<div class="stage">
+<canvas id="c" aria-label="Night sky. Tap the stars."></canvas>
+<div class="intro" id="intro"><div class="ship">⛵</div><p>କଳ୍ପନା କର, ତୁମେ ଜଣେ ନାବିକ, ଅନ୍ଧକାର ମହାସାଗରରେ ନା GPS, ନା ମାନଚିତ୍ର ଉତ୍ତର ଦିଗ କେଉଁଆଡ଼େ? ଏହି ପ୍ରଶ୍ନର ଉତ୍ତର ଆକାଶରେ ହିଁ ରହିଛି!<small>(Imagine you are a sailor on a dark ocean with no GPS and no map. Which way is North? The answer is in the sky!)</small></p><button id="go">🚀 ଆରମ୍ଭ କର (Start)</button></div>
+</div>
+<div class="guide"><div class="av">🧑‍🚀</div><div class="bubble"><p class="task" id="task"></p><p id="msg" aria-live="polite"></p></div></div>
+<div class="panel">
+<div class="ctl" id="consRow" hidden></div>
+<div class="ctl" id="timeRow" hidden><button id="play"></button><label for="tm">ସମୟ (Time) <b id="tmv"></b></label><input id="tm" type="range" min="0" max="12" step="0.05" value="0"><label class="chk"><input type="checkbox" id="trail" checked> ପଥ (Trails)</label></div>
+<div class="ctl"><button id="hint">💡 ଇଙ୍ଗିତ (Hint)</button><button id="reset">↻ ପୁଣି ଆରମ୍ଭ (Restart)</button><label class="chk"><input type="checkbox" id="lab"> ସବୁ ନାମ (All names)</label><label class="chk"><input type="checkbox" id="snd" checked> 🔊 ଧ୍ୱନି (Sound)</label></div>
+<p id="info"></p>
+</div> <!-- panel closed -->
+<div class="sky-nav" id="skyNav" hidden aria-label="Sky view controls"><button id="skyMinus" type="button" aria-label="Zoom out">−</button><span class="sky-value" id="skyZoomValue">100%</span><button id="skyPlus" type="button" aria-label="Zoom in">+</button><button id="skyReset" class="sky-reset" type="button" aria-label="Reset sky view">↺ Reset</button></div>
+</div> <!-- observatory-dashboard closed -->
+</div> <!-- wrap closed -->
+
+<script>
+/* ===== Legacy browser compatibility layer (keeps the original app behaviour) ===== */
+(function (window, document) {
+  'use strict';
+  var AP = Array.prototype, SP = String.prototype;
+  function define(target, name, value) {
+    if (!target || target[name]) return;
+    try { Object.defineProperty(target, name, { configurable: true, writable: true, value: value }); }
+    catch (ignore) { target[name] = value; }
+  }
+  if (!window.requestAnimationFrame) {
+    window.requestAnimationFrame = window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.msRequestAnimationFrame || function (callback) {
+      return window.setTimeout(function () { callback(+new Date()); }, 16);
+    };
+  }
+  if (!window.cancelAnimationFrame) {
+    window.cancelAnimationFrame = window.webkitCancelAnimationFrame || window.mozCancelAnimationFrame || window.clearTimeout;
+  }
+  if (!window.matchMedia) {
+    window.matchMedia = function () {
+      return { matches: false, media: '', addListener: function () {}, removeListener: function () {}, addEventListener: function () {}, removeEventListener: function () {} };
+    };
+  }
+  if (!window.performance) window.performance = {};
+  if (!window.performance.now) window.performance.now = function () { return +new Date(); };
+  var eventConstructorWorks = false;
+  try { eventConstructorWorks = !!(window.Event && new window.Event('compat-test')); } catch (eventCtorError) {}
+  if (!eventConstructorWorks) {
+    window.Event = function (type, params) {
+      var event = document.createEvent('Event');
+      params = params || {};
+      event.initEvent(type, !!params.bubbles, !!params.cancelable);
+      return event;
+    };
+  }
+  define(Math, 'hypot', function () {
+    var sum = 0, i, n;
+    for (i = 0; i < arguments.length; i++) { n = Number(arguments[i]) || 0; sum += n * n; }
+    return Math.sqrt(sum);
+  });
+  define(AP, 'includes', function (value, from) {
+    var i = from || 0; if (i < 0) i = Math.max(0, this.length + i);
+    for (; i < this.length; i++) if (this[i] === value || (this[i] !== this[i] && value !== value)) return true;
+    return false;
+  });
+  define(AP, 'find', function (callback, thisArg) {
+    var i; for (i = 0; i < this.length; i++) if (callback.call(thisArg, this[i], i, this)) return this[i];
+    return undefined;
+  });
+  define(AP, 'flat', function (depth) {
+    var out = [], max = depth === undefined ? 1 : Number(depth), i, value;
+    function add(list, level) {
+      var j, item;
+      for (j = 0; j < list.length; j++) {
+        item = list[j];
+        if (Array.isArray(item) && level > 0) add(item, level - 1); else out.push(item);
+      }
+    }
+    add(this, max); return out;
+  });
+  define(SP, 'repeat', function (count) {
+    count = Math.floor(Number(count) || 0); if (count < 0) throw new RangeError('Invalid count value');
+    var result = '', text = String(this); while (count > 0) { if (count % 2) result += text; count = Math.floor(count / 2); if (count) text += text; }
+    return result;
+  });
+  if (!Object.values) Object.values = function (obj) { var out = [], key; for (key in obj) if (Object.prototype.hasOwnProperty.call(obj, key)) out.push(obj[key]); return out; };
+  if (!window.Set) {
+    window.Set = function (items) {
+      this.length = 0; this.size = 0;
+      var i; if (items && typeof items.length === 'number') for (i = 0; i < items.length; i++) this.add(items[i]);
+    };
+    window.Set.prototype.has = function (value) { var i; for (i = 0; i < this.length; i++) if (this[i] === value) return true; return false; };
+    window.Set.prototype.add = function (value) { if (!this.has(value)) { this[this.length++] = value; this.size = this.length; } return this; };
+    window.Set.prototype.clear = function () { var i; for (i = 0; i < this.length; i++) delete this[i]; this.length = 0; this.size = 0; };
+    window.Set.prototype.forEach = function (fn, context) { var i; for (i = 0; i < this.length; i++) fn.call(context, this[i], this[i], this); };
+  }
+  if (!window.Element && window.HTMLElement) window.Element = window.HTMLElement;
+  if (window.Element) {
+    define(window.Element.prototype, 'matches', function (selector) {
+      var nodes = (this.document || this.ownerDocument).querySelectorAll(selector), i;
+      for (i = 0; i < nodes.length; i++) if (nodes[i] === this) return true;
+      return false;
+    });
+    define(window.Element.prototype, 'closest', function (selector) {
+      var node = this;
+      while (node && node.nodeType === 1) { if (node.matches(selector)) return node; node = node.parentElement || node.parentNode; }
+      return null;
+    });
+    define(window.Element.prototype, 'remove', function () { if (this.parentNode) this.parentNode.removeChild(this); });
+    define(window.Element.prototype, 'append', function () {
+      var i, item; for (i = 0; i < arguments.length; i++) { item = arguments[i]; this.appendChild(typeof item === 'string' ? document.createTextNode(item) : item); }
+    });
+    define(window.Element.prototype, 'replaceChildren', function () {
+      while (this.firstChild) this.removeChild(this.firstChild);
+      var i, item; for (i = 0; i < arguments.length; i++) { item = arguments[i]; this.appendChild(typeof item === 'string' ? document.createTextNode(item) : item); }
+    });
+    define(window.Element.prototype, 'setPointerCapture', function () {});
+    define(window.Element.prototype, 'hasPointerCapture', function () { return false; });
+    define(window.Element.prototype, 'releasePointerCapture', function () {});
+  }
+  function addForEach(proto) { define(proto, 'forEach', function (fn, context) { var i; for (i = 0; i < this.length; i++) fn.call(context, this[i], i, this); }); }
+  if (window.NodeList) addForEach(window.NodeList.prototype);
+  if (window.HTMLCollection) addForEach(window.HTMLCollection.prototype);
+  if (window.CanvasRenderingContext2D && !window.CanvasRenderingContext2D.prototype.roundRect) {
+    window.CanvasRenderingContext2D.prototype.roundRect = function (x, y, width, height, radius) {
+      var r = Number(radius) || 0, w = Math.abs(width), h = Math.abs(height), signX = width < 0 ? -1 : 1, signY = height < 0 ? -1 : 1;
+      r = Math.max(0, Math.min(r, w / 2, h / 2));
+      this.beginPath();
+      this.moveTo(x + r * signX, y);
+      this.lineTo(x + width - r * signX, y);
+      this.quadraticCurveTo(x + width, y, x + width, y + r * signY);
+      this.lineTo(x + width, y + height - r * signY);
+      this.quadraticCurveTo(x + width, y + height, x + width - r * signX, y + height);
+      this.lineTo(x + r * signX, y + height);
+      this.quadraticCurveTo(x, y + height, x, y + height - r * signY);
+      this.lineTo(x, y + r * signY);
+      this.quadraticCurveTo(x, y, x + r * signX, y);
+      this.closePath();
+      return this;
+    };
+  }
+  /* Pointer Events fallback: translates one-finger touch and mouse input to the
+     pointer events used by the app. Native Pointer Events are left untouched. */
+  if (!window.PointerEvent && document.addEventListener) {
+    var activeTarget = null, activeId = 1, suppressMouseUntil = 0;
+    function pointerEvent(type, source, target, id, pointerType) {
+      var ev = document.createEvent('Event');
+      ev.initEvent(type, true, true);
+      ev.pointerId = id; ev.pointerType = pointerType; ev.isPrimary = true;
+      ev.clientX = source.clientX; ev.clientY = source.clientY;
+      ev.screenX = source.screenX || 0; ev.screenY = source.screenY || 0;
+      ev.button = 0; ev.buttons = type === 'pointerup' || type === 'pointercancel' ? 0 : 1;
+      ev.preventDefault = (function (original) { return function () { original.call(ev); }; })(ev.preventDefault);
+      target.dispatchEvent(ev);
+      return ev;
+    }
+    function touchStart(e) {
+      if (activeTarget || !e.changedTouches || !e.changedTouches.length) return;
+      var t = e.changedTouches[0], target = e.target;
+      if (target && target.nodeType === 3) target = target.parentNode;
+      activeTarget = target; activeId = t.identifier + 2; suppressMouseUntil = +new Date() + 900;
+      var ev = pointerEvent('pointerdown', t, activeTarget, activeId, 'touch');
+      if (ev.defaultPrevented) e.preventDefault();
+    }
+    function touchMove(e) {
+      if (!activeTarget || !e.changedTouches) return;
+      var i, t; for (i = 0; i < e.changedTouches.length; i++) if (e.changedTouches[i].identifier + 2 === activeId) { t = e.changedTouches[i]; break; }
+      if (!t) return;
+      var ev = pointerEvent('pointermove', t, activeTarget, activeId, 'touch'); if (ev.defaultPrevented) e.preventDefault();
+    }
+    function touchEnd(e, type) {
+      if (!activeTarget || !e.changedTouches) return;
+      var i, t; for (i = 0; i < e.changedTouches.length; i++) if (e.changedTouches[i].identifier + 2 === activeId) { t = e.changedTouches[i]; break; }
+      if (!t) return;
+      var target = activeTarget, ev = pointerEvent(type, t, target, activeId, 'touch');
+      activeTarget = null; if (ev.defaultPrevented) e.preventDefault();
+    }
+    document.addEventListener('touchstart', touchStart, false);
+    document.addEventListener('touchmove', touchMove, false);
+    document.addEventListener('touchend', function (e) { touchEnd(e, 'pointerup'); }, false);
+    document.addEventListener('touchcancel', function (e) { touchEnd(e, 'pointercancel'); }, false);
+    document.addEventListener('mousedown', function (e) {
+      if (+new Date() < suppressMouseUntil || activeTarget) return;
+      activeTarget = e.target; activeId = 1;
+      var ev = pointerEvent('pointerdown', e, activeTarget, activeId, 'mouse'); if (ev.defaultPrevented) e.preventDefault();
+    }, false);
+    document.addEventListener('mousemove', function (e) {
+      if (!activeTarget || activeId !== 1) return;
+      var ev = pointerEvent('pointermove', e, activeTarget, activeId, 'mouse'); if (ev.defaultPrevented) e.preventDefault();
+    }, false);
+    document.addEventListener('mouseup', function (e) {
+      if (!activeTarget || activeId !== 1) return;
+      var target = activeTarget, ev = pointerEvent('pointerup', e, target, activeId, 'mouse'); activeTarget = null; if (ev.defaultPrevented) e.preventDefault();
+    }, false);
+  }
+  /* CSS compatibility: resolve custom properties and modern alpha-hex colors
+     only on engines that cannot parse them. This leaves modern theme behavior intact. */
+  var supportsVars = false, supportsAlphaHex = false;
+  try {
+    supportsVars = !!(window.CSS && window.CSS.supports && window.CSS.supports('color', 'var(--compat-test)'));
+    supportsAlphaHex = !!(window.CSS && window.CSS.supports && window.CSS.supports('color', '#00000080'));
+  } catch (ignore2) {}
+  if (!supportsVars || !supportsAlphaHex) {
+    var styles = document.getElementsByTagName('style'), css = styles.length ? (styles[0].textContent || styles[0].innerText || '') : '';
+    var root = css.match(/:root\s*\{([^}]*)\}/), vars = {}, m, re = /(--[\w-]+)\s*:\s*([^;]+)\s*;/g;
+    if (root) { while ((m = re.exec(root[1]))) vars[m[1]] = m[2]; }
+    if (css) {
+      if (!supportsVars) {
+        css = css.replace(/--[\w-]+\s*:\s*[^;{}]+;/g, '');
+        css = css.replace(/var\((--[\w-]+)(?:\s*,\s*([^)]*))?\)/g, function (all, name, fallback) { return vars[name] || fallback || 'inherit'; });
+      }
+      if (!supportsAlphaHex) css = css.replace(/#([0-9a-fA-F]{4}|[0-9a-fA-F]{8})\b/g, function (all, hex) {
+        var r, g, b, a;
+        if (hex.length === 4) { r = parseInt(hex.charAt(0) + hex.charAt(0), 16); g = parseInt(hex.charAt(1) + hex.charAt(1), 16); b = parseInt(hex.charAt(2) + hex.charAt(2), 16); a = parseInt(hex.charAt(3) + hex.charAt(3), 16) / 255; }
+        else { r = parseInt(hex.substr(0,2),16); g = parseInt(hex.substr(2,2),16); b = parseInt(hex.substr(4,2),16); a = parseInt(hex.substr(6,2),16) / 255; }
+        return 'rgba(' + r + ',' + g + ',' + b + ',' + a + ')';
+      });
+      var fallbackStyle = document.createElement('style'); fallbackStyle.type = 'text/css';
+      if (fallbackStyle.styleSheet) fallbackStyle.styleSheet.cssText = css; else fallbackStyle.appendChild(document.createTextNode(css));
+      (document.head || document.getElementsByTagName('head')[0]).appendChild(fallbackStyle);
+    }
+  }
+  /* Older flexbox implementations do not understand the gap property. */
+  var gapTest = document.createElement('div'), gapChild = document.createElement('div');
+  gapTest.style.cssText = 'position:absolute;left:-9999px;display:flex;flex-direction:column;row-gap:1px;';
+  gapChild.style.cssText = 'height:1px;width:1px;'; gapTest.appendChild(gapChild); gapTest.appendChild(gapChild.cloneNode(false));
+  document.body.appendChild(gapTest);
+  if (gapTest.scrollHeight < 3) document.documentElement.className += (document.documentElement.className ? ' ' : '') + 'no-flex-gap';
+  document.body.removeChild(gapTest);
+})(window, document);
+/* ===== End legacy browser compatibility layer ===== */
+
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var __read = (this && this.__read) || function (o, n) {
+    var m = typeof Symbol === "function" && o[Symbol.iterator];
+    if (!m) return o;
+    var i = m.call(o), r, ar = [], e;
+    try {
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+    }
+    catch (error) { e = { error: error }; }
+    finally {
+        try {
+            if (r && !r.done && (m = i["return"])) m.call(i);
+        }
+        finally { if (e) throw e.error; }
+    }
+    return ar;
+};
+var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+};
+var __values = (this && this.__values) || function(o) {
+    var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
+    if (m) return m.call(o);
+    if (o && typeof o.length === "number") return {
+        next: function () {
+            if (o && i >= o.length) o = void 0;
+            return { value: o && o[i++], done: !o };
+        }
+    };
+    throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
+};
+(function () {
+    var $ = function (s) { return document.querySelector(s); }, RAD = Math.PI / 180, RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var NS = [['dubhe', 'Dubhe', 11.062, 61.75, 1.79], ['merak', 'Merak', 11.031, 56.38, 2.37], ['phecda', 'Phecda', 11.897, 53.69, 2.44], ['megrez', 'Megrez', 12.257, 57.03, 3.31], ['alioth', 'Alioth', 12.9, 55.96, 1.76], ['mizar', 'Mizar', 13.399, 54.93, 2.23], ['alkaid', 'Alkaid', 13.792, 49.31, 1.86], ['polaris', 'ଧ୍ରୁବତାରା (Polaris)', 2.53, 89.26, 1.98], ['yildun', 'Yildun', 17.537, 86.59, 4.35], ['epsU', 'Eps UMi', 16.766, 82.04, 4.21], ['zetaU', 'Zeta UMi', 15.734, 77.79, 4.29], ['etaU', 'Eta UMi', 16.292, 75.76, 4.95], ['pherkad', 'Pherkad', 15.345, 71.83, 3.05], ['kochab', 'Kochab', 14.845, 74.16, 2.08]];
+    var OS = [['betelgeuse', 'ଆଦ୍ରା (Betelgeuse)', 5.919, 7.41, 0.5], ['bellatrix', 'Bellatrix', 5.419, 6.35, 1.64], ['meissa', 'Meissa', 5.585, 9.93, 3.39], ['mintaka', 'Mintaka', 5.533, -0.3, 2.23], ['alnilam', 'Alnilam', 5.604, -1.2, 1.69], ['alnitak', 'Alnitak', 5.679, -1.94, 1.77], ['saiph', 'Saiph', 5.796, -9.67, 2.07], ['rigel', 'Rigel', 5.242, -8.2, 0.13], ['sirius', 'ସିରିୟସ୍ (Sirius)', 6.752, -16.72, -1.46], ['mirzam', 'Mirzam', 6.378, -17.96, 1.98], ['muliphen', 'Muliphen', 7.063, -15.63, 4.11], ['wezen', 'Wezen', 7.14, -26.39, 1.84], ['adhara', 'Adhara', 6.977, -28.97, 1.5], ['aludra', 'Aludra', 7.403, -29.3, 2.45], ['aldebaran', 'ରୋହିଣୀ (Aldebaran)', 4.599, 16.51, 0.85], ['elnath', 'Elnath', 5.438, 28.61, 1.65], ['zetaT', 'Zeta Tau', 5.627, 21.14, 3], ['gamT', 'Gamma Tau', 4.33, 15.63, 3.65], ['delT', 'Delta Tau', 4.382, 17.54, 3.76], ['epsT', 'Eps Tau', 4.477, 19.18, 3.53], ['pleiades', 'କୃତିକା (Pleiades)', 3.79, 24.1, 1.6]];
+    var ST = {}, IDS = { north: [], orion: [] };
+    [[NS, 'north'], [OS, 'orion']].forEach(function (_a) {
+        var _b = __read(_a, 2), a = _b[0], k = _b[1];
+        return a.forEach(function (r) { ST[r[0]] = { id: r[0], name: r[1], ra: r[2], dec: r[3], mag: r[4], sky: k }; IDS[k].push(r[0]); });
+    });
+    var NOTE = { polaris: 'ଆକାଶରେ ସ୍ଥିର ଦେଖାଯାଏ ଓ ଉତ୍ତର ଦିଗକୁ ସୂଚାଏ। (Looks fixed in the sky and shows North.)', sirius: 'ରାତ୍ରି ଆକାଶର ସବୁଠାରୁ ଉଜ୍ଜ୍ୱଳ ତାରା। (The brightest star of the night sky.)', betelgeuse: 'ଓରିୟନ୍ର ଲାଲ୍ ତାରା। (The red star of Orion.)', aldebaran: 'ବୃଷର ତାରା। (A star of Taurus.)', pleiades: 'ତାରାମାନଙ୍କ ଗୁଚ୍ଛ। (A cluster of stars.)' };
+    var CONS = {
+        dipper: { n: 'ବୃହତ୍ ସପ୍ତର୍ଷି (Big Dipper)', sky: 'north', L: [['dubhe', 'merak'], ['merak', 'phecda'], ['phecda', 'megrez'], ['megrez', 'dubhe'], ['megrez', 'alioth'], ['alioth', 'mizar'], ['mizar', 'alkaid']], s: 'ଏହା ଉର୍ସା ମେଜର ନକ୍ଷତ୍ରମଣ୍ଡଳରେ ଅବସ୍ଥିତ। (It lies in the Ursa Major constellation.)' },
+        little: { n: 'ଲଘୁ ସପ୍ତର୍ଷି (Little Dipper)', sky: 'north', L: [['polaris', 'yildun'], ['yildun', 'epsU'], ['epsU', 'zetaU'], ['zetaU', 'etaU'], ['etaU', 'pherkad'], ['pherkad', 'kochab'], ['kochab', 'zetaU']], s: 'ଧ୍ରୁବତାରା ଏହାର ଅଂଶ। (The Pole Star is a part of it.)' },
+        orion: { n: 'ଓରିୟନ୍ (Orion)', sky: 'orion', L: [['meissa', 'betelgeuse'], ['meissa', 'bellatrix'], ['betelgeuse', 'alnitak'], ['bellatrix', 'mintaka'], ['mintaka', 'alnilam'], ['alnilam', 'alnitak'], ['alnitak', 'saiph'], ['mintaka', 'rigel']], s: 'ମଝିର ତିନି ତାରା ଶିକାରୀର ଅଣ୍ଟାପଟି। (The three middle stars are the Hunter’s Belt.)' },
+        canis: { n: 'କାନିସ୍ ମେଜର (Canis Major)', sky: 'orion', L: [['sirius', 'mirzam'], ['sirius', 'muliphen'], ['sirius', 'wezen'], ['wezen', 'adhara'], ['wezen', 'aludra']], s: 'ଏଥିରେ ସିରିୟସ୍ ଅଛି। (Sirius is in it.)' },
+        taurus: { n: 'ବୃଷ (Taurus)', sky: 'orion', L: [['zetaT', 'aldebaran'], ['aldebaran', 'gamT'], ['gamT', 'delT'], ['delT', 'epsT'], ['epsT', 'elnath']], s: 'ଓରିୟନ୍ ଏକ ଷଣ୍ଢ ସହିତ ଯୁଦ୍ଧ କରୁଥିବା ପରି ଦେଖାଯାଏ। (Orion seems to fight a bull.)' }
+    };
+    var TX = {
+        p0: 'ସପ୍ତର୍ଷିମଣ୍ଡଳର ଶେଷ ଭାଗରେ ଥିବା ଦୁଇଟି ତାରାକୁ ଟାପ୍ କର । (Tap the two stars at the end of the Big Dipper’s bowl.)',
+        p1: 'ନୀଳ ବିନ୍ଦୁକୁ ଧରି ଆକାଶରେ ଟାଣ । ରେଖାକୁ ବଢ଼ାଇ ଧ୍ରୁବତାରା ଖୋଜ । (Drag the blue dot across the sky to extend the line and discover the Pole Star.)',
+        pd: 'ବାଃ! ଧ୍ରୁବତାରା ମିଳିଗଲା! ବର୍ତ୍ତମାନ ବାମ ପାର୍ଶ୍ୱରେ ଥିବା କଣ୍ଟ୍ରୋଲ୍ ପ୍ୟାନେଲ୍‌ର "play" ବଟନ୍‌କୁ ଦବାଅ: ଅନ୍ୟ ତାରା ଘୂରୁଛନ୍ତି, ଧ୍ରୁବତାରା ସ୍ଥିର!',
+        s0: 'ଓରିୟନ୍ର ମଝିରେ ଥିବା ତିନୋଟି ଉଜ୍ଜ୍ୱଳ ତାରାକୁ ଟାପ୍ କର (ଶିକାରୀର ଅଣ୍ଟାପଟି) । (Tap the three bright stars in Orion’s middle: the Hunter’s Belt.)',
+        s1: 'ନୀଳ ବିନ୍ଦୁକୁ ଆଙ୍ଗୁଠି ବା ମାଉସ୍ ଦ୍ୱାରା ଟାଣି ରେଖା ବଢ଼ାଅ। କେଉଁ ଉଜ୍ଜ୍ୱଳ ତାରା ମିଳୁଛି ଖୋଜ । (Drag the blue dot freely across the sky to search for the correct star.)',
+        sd: 'ସିରିୟସ୍ ମିଳିଲା! ଏହା ରାତ୍ରି ଆକାଶର ସବୁଠାରୁ ଉଜ୍ଜ୍ୱଳ ତାରା! (You found Sirius, the brightest star in the night sky!)',
+        b: 'ଦୁଇଟି ତାରାକୁ ଗୋଟିଏ ପରେ ଗୋଟିଏ ଟାପ୍ କରି ଗାରଟିଏ ଟାଣନ୍ତୁ । ଓରିୟନ୍‌ର ଆକୃତି ତିଆରି କରିବା ପାଇଁ ପ୍ରତ୍ୟେକ ଗାର ଟାଣନ୍ତୁ । (Tap two stars one after another to draw a line. Draw every line to make the shape of Orion.)',
+        bad: 'ଏହି ଦୁଇ ତାରା ମଧ୍ୟରେ ରେଖା ନାହିଁ। ଆଉ ଥରେ ଚେଷ୍ଟା କର। (No line between these two. Try again or press Hint.)',
+        pw: 'ଏହା ସେହି ତାରା ନୁହେଁ। ପାତ୍ରର ଧାରରେ ଥିବା ଦୁଇଟି ତାରା ଖୋଜ। (Not this one. Find the two stars on the edge of the bowl.)',
+        def: 'ଜାଣିଛ? ସମଗ୍ର ଆକାଶକୁ 88ଟି ନକ୍ଷତ୍ରମଣ୍ଡଳରେ ବିଭକ୍ତ କରାଯାଇଛି। ଯେକୌଣସି ତାରାକୁ ଟାପ୍ କର। (Did you know? The whole sky is divided into 88 constellations. Tap any star.)'
+    };
+    // Unique, age-appropriate teacher instructions for every Build Constellations choice.
+    var BUILD_GUIDES = {
+        dipper: 'ବୃହତ୍ ସପ୍ତର୍ଷି (Big Dipper): ପ୍ରଥମେ ପାତ୍ର ଆକୃତିର ଚାରିଟି ତାରା ଚିହ୍ନଟ କର। ପରେ ହ୍ୟାଣ୍ଡଲ୍‌ର ତିନୋଟି ତାରାକୁ ଯୋଡ଼। ସଠିକ୍ ଯୋଡ଼ିର ଦୁଇଟି ତାରାକୁ ଗୋଟିଏ ପରେ ଗୋଟିଏ ଟାପ୍ କର। (Find the four bowl stars, then connect the three handle stars. Tap two connected stars at a time.)',
+        little: 'ଲଘୁ ସପ୍ତର୍ଷି (Little Dipper): ଧ୍ରୁବତାରା (Polaris) ଠାରୁ ଆରମ୍ଭ କର। ତାରାଗୁଡ଼ିକୁ ଗୋଟିଏ ପରେ ଗୋଟିଏ ଯୋଡ଼ି ଛୋଟ ପାତ୍ର ଓ ହ୍ୟାଣ୍ଡଲ୍ ଆକୃତି ଗଢ଼। (Start at Polaris. Connect neighbouring stars to build the Little Dipper’s handle and small bowl.)',
+        orion: 'ଓରିୟନ୍ (Orion): ମଝିରେ ଥିବା ତିନିଟି ଉଜ୍ଜ୍ୱଳ ତାରାକୁ ଖୋଜ। ସେଗୁଡ଼ିକୁ ଯୋଡ଼ି ଶିକାରୀର ଅଣ୍ଟାପଟି ତିଆରି କର; ତାପରେ ଅନ୍ୟ ତାରାଗୁଡ଼ିକୁ ଯୋଡ଼। (Find the three stars of Orion’s Belt, connect them, then complete the Hunter’s outline.)',
+        canis: 'କାନିସ୍ ମେଜର (Canis Major): ରାତ୍ରି ଆକାଶର ସବୁଠାରୁ ଉଜ୍ଜ୍ୱଳ ତାରା ସିରିୟସ୍‌କୁ ଖୋଜ। ସେଠାରୁ ନିକଟର ତାରାଗୁଡ଼ିକୁ ସଠିକ୍ ଯୋଡ଼ିରେ ଟାପ୍ କରି ଆକୃତି ଗଢ଼। (Locate bright Sirius first, then connect it with the other stars of Canis Major.)',
+        taurus: 'ବୃଷ (Taurus): ରୋହିଣୀ (Aldebaran) ତାରାକୁ ଚିହ୍ନଟ କର। ଏହାଠାରୁ ପାଖର ତାରାଗୁଡ଼ିକୁ ଗୋଟିଏ ପରେ ଗୋଟିଏ ଯୋଡ଼ି ବୃଷ ନକ୍ଷତ୍ରମଣ୍ଡଳର ଆକୃତି ଗଢ଼। (Find Aldebaran and connect the neighbouring stars to form the Taurus pattern.)'
+    };
+    var sd = 7;
+    var rnd = function () { return (sd = sd * 16807 % 2147483647) / 2147483647; };
+    /* Lightweight path for Android 9 smart-class boxes and modest CPUs.
+       No change to named stars, missions, interactions, or scoring. */
+    var uaLow = /Android\s(?:[1-9](?:\.|;|\b))/.test(navigator.userAgent || '');
+    var coresLow = navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4;
+    var LOW_POWER = !!(uaLow || coresLow);
+    if (LOW_POWER) document.documentElement.className += ' low-power-observatory';
+    var BACKGROUND_COUNT = LOW_POWER ? 105 : 300;
+    var BG = { north: [], orion: [] }, BC = ['#cfd8ff', '#ffe2b0', '#ffc4d6', '#b8f0ff'];
+    for (var i = 0; i < BACKGROUND_COUNT; i++)
+        BG.north.push([rnd() * 24, 28 + rnd() * 62, 3.5 + rnd() * 2.5, i % 4]);
+    for (var i = 0; i < BACKGROUND_COUNT; i++)
+        BG.orion.push([3.3 + rnd() * 4.6, -36 + rnd() * 72, 3.5 + rnd() * 2.5, i % 4]);
+    var cv = $('#c'), ctx = cv.getContext('2d');
+    var W = 0, H = 0, KN = 1, KO = 1, T = 0, DT = 0, play = false, mode = 'pole', sel = null, flash = { ids: [], until: 0 }, CUR = {}, PA = [], sh = null, nextSh = 2500, AC = null;
+    var SS = { pole: { step: 0, picks: [], k: 1, freeTip: null, done: false }, sirius: { step: 0, k: 1, freeTip: null, done: false } };
+    var B = { cid: 'orion', drawn: new Set(), first: null, done: false };
+    var doneM = { pole: false, sirius: false, build: false };
+    var MN = { pole: ['🧭 ଧ୍ରୁବତାରା ଖୋଜ', 'Find the Pole Star'], sirius: ['⭐ ସିରିୟସ୍ ଖୋଜ', 'Find Sirius'], build: ['✨ ନକ୍ଷତ୍ରମଣ୍ଡଳ ଗଢ଼', 'Build Constellations'] };
+    var BELT = ['mintaka', 'alnilam', 'alnitak'], GD = '#ffd479', CY = '#7fd6ff';
+    var curSky = function () { return mode === 'pole' ? 'north' : mode === 'sirius' ? 'orion' : CONS[B.cid].sky; };
+    var cyN = function () { return H / 2 - 10; };
+    function beep(f, d, ty) { if (!$('#snd').checked)
+        return; try {
+        AC = AC || new (window.AudioContext || window.webkitAudioContext)();
+        var o = AC.createOscillator(), g = AC.createGain();
+        o.type = ty || 'sine';
+        o.frequency.value = f;
+        g.gain.setValueAtTime(.08, AC.currentTime);
+        g.gain.exponentialRampToValueAtTime(.001, AC.currentTime + d);
+        o.connect(g);
+        g.connect(AC.destination);
+        o.start();
+        o.stop(AC.currentTime + d);
+    }
+    catch (e) { } }
+    var ding = function () { beep(660, .15); setTimeout(function () { return beep(880, .2); }, 120); setTimeout(function () { return beep(1175, .4); }, 260); };
+    function burst(x, y, n) { if (RM)
+        return; for (var i = 0; i < n; i++) {
+        var a = Math.random() * 6.283, s = 60 + Math.random() * 230;
+        PA.push({ x: x, y: y, vx: Math.cos(a) * s, vy: Math.sin(a) * s - 40, l: 1, c: [GD, '#ff8fc8', CY, '#9dffb8'][i % 4], r: 2 + Math.random() * 3 });
+    } }
+    function fit() { var w = cv.parentElement.getBoundingClientRect().width; W = w; H = Math.round(cv.parentElement.getBoundingClientRect().height); H = Math.max(H, 300); var d = LOW_POWER ? Math.min(1.3, Math.sqrt(2100000 / Math.max(1, W * H))) : Math.min(devicePixelRatio || 1, 1.5); d = Math.max(1, d); cv.width = Math.round(W * d); cv.height = Math.round(H * d); cv.style.height = H + 'px'; ctx.setTransform(d, 0, 0, d, 0, 0); KN = (Math.min(W, H) / 2 - 36) / 50; KO = Math.min(W / 54, H / 64); }
+    /* View transform affects only the virtual sky, not control panels or UI. */
+    var skyZoom = 1, skyPanX = 0, skyPanY = 0;
+    function skyLimit() {
+        var mx = W * (0.48 + Math.max(0, skyZoom - 1) * 0.55);
+        var my = H * (0.48 + Math.max(0, skyZoom - 1) * 0.55);
+        skyPanX = Math.max(-mx, Math.min(mx, skyPanX));
+        skyPanY = Math.max(-my, Math.min(my, skyPanY));
+    }
+    function skyView(x, y) { return [W / 2 + (x - W / 2) * skyZoom + skyPanX, H / 2 + (y - H / 2) * skyZoom + skyPanY]; }
+    function skyZoomAt(z, x, y) {
+        z = Math.max(.7, Math.min(3.5, z));
+        var old = skyZoom;
+        if (Math.abs(z - old) < .0001) return;
+        skyPanX = x - W / 2 - (x - W / 2 - skyPanX) * z / old;
+        skyPanY = y - H / 2 - (y - H / 2 - skyPanY) * z / old;
+        skyZoom = z;
+        skyLimit();
+        var val = document.getElementById('skyZoomValue');
+        if (val) val.textContent = Math.round(skyZoom * 100) + '%';
+    }
+    function skyResetView() { skyZoom = 1; skyPanX = 0; skyPanY = 0; var val = document.getElementById('skyZoomValue'); if (val) val.textContent = '100%'; }
+    function pxy(ra, dec, sk, t) { if (sk === 'north') {
+        var a = (ra * 15 + t * 15 - 90) * RAD, r = (90 - dec) * KN;
+        return skyView(W / 2 + r * Math.cos(a), cyN() - r * Math.sin(a));
+    } return skyView(W / 2 - (ra - 5.55) * 15 * Math.cos(dec * RAD) * KO, H / 2 - dec * KO); }
+    var msg = function (t, k) { var m = $('#msg'); m.textContent = t || ''; m.className = k || ''; };
+    function info(id) { $('#info').textContent = id ? ST[id].name + ': ଉଜ୍ଜ୍ୱଳତା (Brightness) ' + ST[id].mag + ' ସଂଖ୍ୟା ଯେତେ କମ୍, ତାରା ସେତେ ଉଜ୍ଜ୍ୱଳ (smaller number = brighter star).' + (NOTE[id] ? ' ' + NOTE[id] : '') : TX.def; }
+    function taskText() {
+        if (mode === 'pole') {
+            var s = SS.pole;
+            return s.done ? TX.pd : s.step ? TX.p1 : TX.p0;
+        }
+        if (mode === 'sirius') {
+            var s = SS.sirius;
+            return s.done ? TX.sd : s.step ? TX.s1 : TX.s0;
+        }
+        if (B.done)
+            return 'ଶାବାସ! (Well done!) ' + CONS[B.cid].n + ': ' + CONS[B.cid].s;
+        return (BUILD_GUIDES[B.cid] || TX.b) +
+            '  [' + B.drawn.size + '/' + CONS[B.cid].L.length + ' lines]';
+    }
+    function ui() {
+        $('#task').textContent = taskText();
+        var ps = SS.pole, ss = SS.sirius, s = SS[mode];
+        $('#timeRow').hidden = !(curSky() === 'north' && ((mode === 'pole' && ps.done) || mode === 'build'));
+        $('#consRow').hidden = mode !== 'build';
+        document.querySelectorAll('#tabs button[data-m]').forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.m === mode); b.querySelector('.ck').textContent = doneM[b.dataset.m] ? ' ⭐' : ''; });
+        document.querySelectorAll('#consRow button').forEach(function (b) { return b.setAttribute('aria-pressed', b.dataset.c === B.cid); });
+        var n = Object.values(doneM).filter(Boolean).length;
+        $('#score').textContent = '⭐'.repeat(n) + '☆'.repeat(3 - n);
+    }
+    function geo(m) {
+        var s = SS[m];
+        var a = m === 'pole' ? ['merak', 'dubhe', 'polaris'] : ['mintaka', 'alnitak', 'sirius'];
+        var p0 = CUR[a[0]], p1 = CUR[a[1]], tg = CUR[a[2]];
+        if (!p0 || !p1 || !tg)
+            return null;
+        var L = Math.hypot(p1[0] - p0[0], p1[1] - p0[1]);
+        if (L < .001)
+            return null;
+        var u = [(p1[0] - p0[0]) / L, (p1[1] - p0[1]) / L];
+        // The free vector is relative to the anchor, so it survives resizing.
+        var tip = s.freeTip
+            ? [p1[0] + s.freeTip[0] * L, p1[1] + s.freeTip[1] * L]
+            : [p1[0] + u[0] * s.k * L, p1[1] + u[1] * s.k * L];
+        return { p1: p1, u: u, L: L, tg: tg, tip: tip };
+    }
+    // Evaluate discovery only after a real drag has ended near the target.
+    function check(releasedAt) {
+        if (mode !== 'pole' && mode !== 'sirius')
+            return;
+        var g = geo(mode);
+        var mission = SS[mode];
+        if (!g || !mission || mission.step !== 1 || mission.done || !releasedAt)
+            return;
+        var target = g.tg;
+        var closeToStar = Math.hypot(releasedAt[0] - target[0], releasedAt[1] - target[1]) <= 32;
+        if (!closeToStar)
+            return;
+        mission.done = true;
+        doneM[mode] = true;
+        burst(target[0], target[1], 80);
+        ding();
+        msg(mode === 'pole'
+            ? 'Found the Pole Star! Now press “play” on the left panel: other stars rotate, but the Pole Star stays still!'
+            : 'ଶାବାସ! ତୁମେ ସିରିୟସ୍ ଖୋଜି ପାଇଲ! (You discovered Sirius!)', 'ok');
+        ui();
+    }
+    function tap(x, y) {
+        var best = null, bd = 24;
+        for (var id in CUR) {
+            var d = Math.hypot(CUR[id][0] - x, CUR[id][1] - y);
+            if (d < bd) {
+                bd = d;
+                best = id;
+            }
+        }
+        sel = best;
+        info(best);
+        if (best)
+            beep(520 + ST[best].mag * -40, .08);
+        if (mode === 'pole') {
+            var s = SS.pole;
+            if (s.step === 0 && best) {
+                if (best === 'dubhe' || best === 'merak') {
+                    if (!s.picks.includes(best))
+                        s.picks.push(best);
+                    if (s.picks.length === 2) {
+                        s.step = 1;
+                        burst(CUR[best][0], CUR[best][1], 24);
+                        beep(784, .15);
+                    }
+                    msg('');
+                }
+                else {
+                    msg(TX.pw);
+                    beep(180, .18, 'sawtooth');
+                }
+                ui();
+            }
+        }
+        else if (mode === 'sirius') {
+            var s = SS.sirius;
+            if (s.step === 0) {
+                if (BELT.some(function (id) { return CUR[id] && Math.hypot(CUR[id][0] - x, CUR[id][1] - y) < 28; })) {
+                    s.step = 1;
+                    burst(x, y, 24);
+                    beep(784, .15);
+                    msg('');
+                }
+                else if (best) {
+                    msg(TX.pw);
+                    beep(180, .18, 'sawtooth');
+                }
+                ui();
+            }
+        }
+        else if (!B.done && best) {
+            var L = CONS[B.cid].L;
+            if (!L.some(function (p) { return p.includes(best); })) {
+                B.first = null;
+                return;
+            }
+            if (!B.first) {
+                B.first = best;
+                msg('');
+            }
+            else if (B.first === best)
+                B.first = null;
+            else {
+                var k_1 = [B.first, best].sort().join('|'), ok = L.some(function (p) { return __spreadArray([], __read(p), false).sort().join('|') === k_1; });
+                if (ok && !B.drawn.has(k_1)) {
+                    B.drawn.add(k_1);
+                    var a = CUR[B.first], b = CUR[best];
+                    burst((a[0] + b[0]) / 2, (a[1] + b[1]) / 2, 16);
+                    beep(784, .12);
+                    msg('ସଠିକ୍! (Correct!)', 'ok');
+                    if (B.drawn.size === L.length) {
+                        B.done = true;
+                        doneM.build = true;
+                        var ids = __spreadArray([], __read(new Set(L.flat())), false);
+                        burst(ids.reduce(function (q, i) { return q + CUR[i][0]; }, 0) / ids.length, ids.reduce(function (q, i) { return q + CUR[i][1]; }, 0) / ids.length, 90);
+                        ding();
+                    }
+                }
+                else if (!ok) {
+                    msg(TX.bad);
+                    beep(180, .18, 'sawtooth');
+                }
+                B.first = null;
+            }
+            ui();
+        }
+    }
+    var showName = function (id) { if ($('#lab').checked || sel === id)
+        return true; if (mode === 'pole')
+        return SS.pole.picks.includes(id) || (id === 'polaris' && SS.pole.done); if (mode === 'sirius')
+        return (SS.sirius.step > 0 && BELT.includes(id)) || (id === 'sirius' && SS.sirius.done); return false; };
+    function txt(t, x, y, col, al) { ctx.font = '700 13px "Noto Sans Oriya",system-ui,sans-serif'; ctx.textAlign = al || 'left'; ctx.lineWidth = 4; ctx.strokeStyle = 'rgba(5,8,36,.92)'; ctx.strokeText(t, x, y); ctx.fillStyle = col || '#f1f3ff'; ctx.fillText(t, x, y); }
+    function ring(p, ts, col) { var r = 10 + (RM ? 0 : Math.sin(ts / 220) * 3); ctx.strokeStyle = col; ctx.lineWidth = 2.2; ctx.shadowColor = col; ctx.shadowBlur = 12; ctx.beginPath(); ctx.arc(p[0], p[1], r, 0, 7); ctx.stroke(); ctx.shadowBlur = 0; }
+    function seg(a, b, col, w, dash, glow) { ctx.strokeStyle = col; ctx.lineWidth = w; ctx.setLineDash(dash || []); if (glow) {
+        ctx.shadowColor = col;
+        ctx.shadowBlur = 10;
+    } ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.stroke(); ctx.setLineDash([]); ctx.shadowBlur = 0; }
+    function nebula(sk) { (sk === 'north' ? [[.2, .3, .5, 'rgba(130,80,255,.3)'], [.8, .65, .55, 'rgba(0,180,210,.2)'], [.72, .12, .4, 'rgba(255,90,170,.2)']] : [[.25, .7, .55, 'rgba(255,90,170,.24)'], [.75, .3, .55, 'rgba(100,90,255,.28)'], [.5, .5, .45, 'rgba(0,200,180,.16)']]).forEach(function (_a) {
+        var _b = __read(_a, 4), a = _b[0], b = _b[1], r = _b[2], c = _b[3];
+        var R = r * Math.max(W, H), g = ctx.createRadialGradient(a * W, b * H, 0, a * W, b * H, R);
+        g.addColorStop(0, c);
+        g.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.fillStyle = g;
+        ctx.fillRect(0, 0, W, H);
+    }); }
+    // Boat stays at the water surface, directly below the Pole Star's guide.
+    function boatPosition(ts) {
+        var pole = pxy(ST.polaris.ra, ST.polaris.dec, 'north', T);
+        var x = pole[0];
+        var seaY = H - Math.max(34, H * .085);
+        var waveY = seaY + (RM ? 0 : Math.sin(x / 26 + ts / 700) * 3);
+        return { x: x, y: waveY };
+    }
+    function ocean(ts) {
+        var oh = Math.max(34, H * .085), y0 = H - oh;
+        var g = ctx.createLinearGradient(0, y0, 0, H);
+        g.addColorStop(0, '#14367a');
+        g.addColorStop(1, '#050f2e');
+        var wv = function (x) { return y0 + (RM ? 0 : Math.sin(x / 26 + ts / 700) * 3); };
+        ctx.fillStyle = g;
+        ctx.beginPath();
+        ctx.moveTo(0, H);
+        for (var x = 0; x <= W; x += 8)
+            ctx.lineTo(x, wv(x));
+        ctx.lineTo(W, H);
+        ctx.fill();
+        ctx.strokeStyle = 'rgba(170,215,255,.45)';
+        ctx.lineWidth = 1.3;
+        ctx.beginPath();
+        for (var x = 0; x <= W; x += 8)
+            x ? ctx.lineTo(x, wv(x)) : ctx.moveTo(x, wv(x));
+        ctx.stroke();
+        var boat = boatPosition(ts);
+        ctx.save();
+        ctx.font = '28px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'alphabetic';
+        ctx.fillStyle = '#fff';
+        // Hull touches the water, sail is visibly above it.
+        ctx.fillText('⛵', boat.x, boat.y + 15);
+        ctx.restore();
+        return y0;
+    }
+    function draw(ts) {
+        var e_1, _a, e_2, _b;
+        var sk = curSky(), t = sk === 'north' ? T : 0;
+        CUR = {};
+        var g = ctx.createLinearGradient(0, 0, 0, H);
+        g.addColorStop(0, '#04071f');
+        g.addColorStop(1, '#14205a');
+        ctx.fillStyle = g;
+        ctx.fillRect(0, 0, W, H);
+        if (!LOW_POWER) nebula(sk);
+        BG[sk].forEach(function (b) { var p = pxy(b[0], b[1], sk, t); if (p[0] < 0 || p[0] > W || p[1] < 0 || p[1] > H)
+            return; ctx.globalAlpha = (.3 + (5.5 - b[2]) * .15) * (RM ? 1 : .7 + .3 * Math.sin(ts / 500 + b[0] * 9)); ctx.fillStyle = BC[b[3]]; ctx.beginPath(); ctx.arc(p[0], p[1], b[2] < 4 ? 1.3 : .9, 0, 7); ctx.fill(); });
+        ctx.globalAlpha = 1;
+        if (!RM) {
+            if (!sh && ts > nextSh) {
+                sh = { x: W * (.45 + Math.random() * .55), y: H * (.03 + Math.random() * .2), l: 1 };
+                nextSh = ts + 5000 + Math.random() * 6000;
+            }
+            if (sh) {
+                sh.x -= 430 * DT;
+                sh.y += 215 * DT;
+                sh.l -= DT * 1.4;
+                if (sh.l <= 0)
+                    sh = null;
+                else {
+                    ctx.globalAlpha = sh.l;
+                    seg([sh.x, sh.y], [sh.x + 70, sh.y - 35], '#fff', 2, null, true);
+                    ctx.globalAlpha = 1;
+                }
+            }
+        }
+        var y0 = H;
+        if (sk === 'north')
+            y0 = ocean(ts);
+        if (sk === 'north' && $('#trail').checked && T > 0) {
+            ctx.lineWidth = 1;
+            ctx.strokeStyle = 'rgba(170,200,255,.23)';
+            IDS.north.forEach(function (id) { if (id === 'polaris')
+                return; var s = ST[id], a0 = (s.ra * 15 - 90) * RAD, a1 = (s.ra * 15 + T * 15 - 90) * RAD; ctx.beginPath(); var cent = skyView(W / 2, cyN()); ctx.arc(cent[0], cent[1], (90 - s.dec) * KN * skyZoom, -a0, -a1, true); ctx.stroke(); });
+        }
+        IDS[sk].forEach(function (id) { return CUR[id] = pxy(ST[id].ra, ST[id].dec, sk, t); });
+        if (mode === 'build')
+            CONS[B.cid].L.forEach(function (p) { if (B.drawn.has(__spreadArray([], __read(p), false).sort().join('|')))
+                seg(CUR[p[0]], CUR[p[1]], GD, 2.5, null, true); });
+        if (mode === 'pole') {
+            var s = SS.pole;
+            if (s.step >= 1) {
+                seg(CUR.merak, CUR.dubhe, CY, 2.5, null, true);
+                var gm = geo('pole');
+                if (gm) {
+                    // Use one shared endpoint for both the line and the blue marker.
+                    var end = s.done ? CUR.polaris : gm.tip;
+                    seg(gm.p1, end, CY, 2.5, [6, 5], true);
+                    ctx.fillStyle = CY;
+                    ctx.beginPath();
+                    ctx.arc(end[0], end[1], 5.2, 0, Math.PI * 2);
+                    ctx.fill();
+                    if (!s.done) {
+                        ctx.beginPath();
+                        ctx.arc(end[0], end[1], 12, 0, Math.PI * 2);
+                        ctx.strokeStyle = 'rgba(127,214,255,.65)';
+                        ctx.lineWidth = 1.5;
+                        ctx.stroke();
+                    }
+                }
+            }
+            if (s.done) {
+                var p = CUR.polaris;
+                ring(p, ts, GD);
+                var boat = boatPosition(ts);
+                seg([boat.x, boat.y - 12], [p[0], p[1] + 11], GD, 2, [3, 6], true);
+                txt('ଉତ୍ତର (North)', p[0] + 12, (boat.y + p[1]) / 2, GD);
+            }
+        }
+        if (mode === 'sirius') {
+            var s = SS.sirius;
+            if (s.step >= 1) {
+                BELT.forEach(function (id) { return ring(CUR[id], ts, CY); });
+                seg(CUR.mintaka, CUR.alnitak, CY, 2.5, null, true);
+                var gm = geo('sirius');
+                if (gm) {
+                    // Snap both line and marker to Sirius after completion.
+                    var end = s.done ? CUR.sirius : gm.tip;
+                    seg(gm.p1, end, CY, 2.5, [6, 5], true);
+                    ctx.fillStyle = CY;
+                    ctx.beginPath();
+                    ctx.arc(end[0], end[1], 5.2, 0, Math.PI * 2);
+                    ctx.fill();
+                    if (!s.done) {
+                        ctx.beginPath();
+                        ctx.arc(end[0], end[1], 12, 0, Math.PI * 2);
+                        ctx.strokeStyle = 'rgba(127,214,255,.65)';
+                        ctx.lineWidth = 1.5;
+                        ctx.stroke();
+                    }
+                }
+            }
+            if (s.done)
+                ring(CUR.sirius, ts, GD);
+        }
+        if (mode === 'build' && B.first)
+            ring(CUR[B.first], ts, CY);
+        if (ts < flash.until)
+            flash.ids.forEach(function (id) { return CUR[id] && ring(CUR[id], ts, '#ff9a9a'); });
+        IDS[sk].forEach(function (id) {
+            var s = ST[id], p = CUR[id], r = Math.max(1.8, Math.min(6.5, 2 + (3.2 - s.mag) * .9)), col = id === 'betelgeuse' ? '#ffb38a' : id === 'aldebaran' ? '#ffc78a' : id === 'rigel' ? '#bcd7ff' : '#fff6dc';
+            var gr = ctx.createRadialGradient(p[0], p[1], 0, p[0], p[1], r * 3.6);
+            gr.addColorStop(0, col);
+            gr.addColorStop(.3, 'rgba(255,240,200,.4)');
+            gr.addColorStop(1, 'rgba(255,240,200,0)');
+            ctx.fillStyle = gr;
+            ctx.beginPath();
+            ctx.arc(p[0], p[1], r * 3.6, 0, 7);
+            ctx.fill();
+            ctx.fillStyle = col;
+            ctx.beginPath();
+            ctx.arc(p[0], p[1], r, 0, 7);
+            ctx.fill();
+            if (r >= 3.6) {
+                var L = r * (3.2 + (RM ? 0 : Math.sin(ts / 400 + r) * .5));
+                ctx.globalAlpha = .7;
+                seg([p[0] - L, p[1]], [p[0] + L, p[1]], col, 1);
+                seg([p[0], p[1] - L], [p[0], p[1] + L], col, 1);
+                ctx.globalAlpha = 1;
+            }
+            if (sel === id) {
+                ctx.strokeStyle = '#fff';
+                ctx.lineWidth = 1.6;
+                ctx.beginPath();
+                ctx.arc(p[0], p[1], r + 7, 0, 7);
+                ctx.stroke();
+            }
+        });
+        // ===== PROFESSIONAL STAR LABELS V6 =====
+        // Smart floating labels with matching colours
+        if ($('#lab').checked) {
+            ctx.save();
+            var traditionalNames_1 = {
+                polaris: 'ଧ୍ରୁବତାରା (Polaris)',
+                sirius: 'ଲୁବ୍ଧକ (Sirius)',
+                aldebaran: 'ରୋହିଣୀ (Aldebaran)'
+            };
+            var colors_1 = [
+                '#82cfff', '#ffb878', '#c5a5ff',
+                '#73e0c2', '#ff9fc7', '#f7d46b',
+                '#9dbbff', '#b6e68c', '#ff9d92',
+                '#80e0eb', '#dfb1ff', '#ffc58e',
+                '#a4e5bb', '#f4a9e5', '#d5d879',
+                '#8cc0ff', '#ffad9a', '#9de6dd',
+                '#c9aaff', '#ffdd99', '#a6d2f1'
+            ];
+            var fontSize_1 = W < 500 ? 12 : (W < 900 ? 14 : 16);
+            var boxH = W < 500 ? 29 : (W < 900 ? 34 : 39);
+            var margin_1 = 8;
+            ctx.font =
+                "600 ".concat(fontSize_1, "px \"Noto Sans Oriya\", Arial, sans-serif");
+            ctx.textBaseline = 'middle';
+            var stars_1 = IDS[sk].map(function (id, i) { return ({
+                id: id,
+                x: CUR[id][0],
+                y: CUR[id][1],
+                name: traditionalNames_1[id] || ST[id].name,
+                color: colors_1[i % colors_1.length]
+            }); });
+            var rectsOverlap_1 = function (a, b, gap) {
+                if (gap === void 0) { gap = 6; }
+                return a.x < b.x + b.w + gap &&
+                    a.x + a.w + gap > b.x &&
+                    a.y < b.y + b.h + gap &&
+                    a.y + a.h + gap > b.y;
+            };
+            var starInBox_1 = function (s, r) {
+                return s.x > r.x - 12 &&
+                    s.x < r.x + r.w + 12 &&
+                    s.y > r.y - 12 &&
+                    s.y < r.y + r.h + 12;
+            };
+            var placed_1 = [];
+            // Reuse positions between animation frames
+            var cacheKey = sk + '|' + Math.round(W) + '|' +
+                Math.round(H) + '|' +
+                (sk === 'north' ? T.toFixed(1) : '0');
+            var oldCache = draw._labelCacheV6;
+            if (oldCache && oldCache.key === cacheKey) {
+                oldCache.labels.forEach(function (p) {
+                    var star = stars_1.find(function (s) { return s.id === p.id; });
+                    if (star)
+                        placed_1.push(__assign(__assign({}, star), { rect: __assign({}, p.rect) }));
+                });
+            }
+            else {
+                // Place important stars first
+                var order = __spreadArray([], __read(stars_1), false).sort(function (a, b) {
+                    var priority = function (s) {
+                        return s.id === 'polaris' ||
+                            s.id === 'sirius' ? -10 : ST[s.id].mag;
+                    };
+                    return priority(a) - priority(b);
+                });
+                var _loop_1 = function (star) {
+                    var e_3, _d, e_4, _e, e_5, _f;
+                    var boxW = Math.min(W - 2 * margin_1, ctx.measureText(star.name).width + 26);
+                    var directions = [
+                        [1, -1], [-1, -1],
+                        [1, 1], [-1, 1],
+                        [0, -1], [0, 1],
+                        [1, 0], [-1, 0]
+                    ];
+                    var candidates = [];
+                    try {
+                        // Search around the star
+                        for (var _g = (e_3 = void 0, __values([45, 70, 100, 140, 190, 250])), _h = _g.next(); !_h.done; _h = _g.next()) {
+                            var d = _h.value;
+                            try {
+                                for (var directions_1 = (e_4 = void 0, __values(directions)), directions_1_1 = directions_1.next(); !directions_1_1.done; directions_1_1 = directions_1.next()) {
+                                    var _j = __read(directions_1_1.value, 2), dx = _j[0], dy = _j[1];
+                                    candidates.push({
+                                        x: star.x + dx * d - boxW / 2,
+                                        y: star.y + dy * d - boxH / 2,
+                                        w: boxW,
+                                        h: boxH
+                                    });
+                                }
+                            }
+                            catch (e_4_1) { e_4 = { error: e_4_1 }; }
+                            finally {
+                                try {
+                                    if (directions_1_1 && !directions_1_1.done && (_e = directions_1.return)) _e.call(directions_1);
+                                }
+                                finally { if (e_4) throw e_4.error; }
+                            }
+                        }
+                    }
+                    catch (e_3_1) { e_3 = { error: e_3_1 }; }
+                    finally {
+                        try {
+                            if (_h && !_h.done && (_d = _g.return)) _d.call(_g);
+                        }
+                        finally { if (e_3) throw e_3.error; }
+                    }
+                    // Also search empty spaces across the sky
+                    var cols = Math.max(5, Math.floor(W / 75));
+                    var rows = Math.max(4, Math.floor(H / 50));
+                    for (var row = 0; row <= rows; row++) {
+                        for (var col = 0; col <= cols; col++) {
+                            candidates.push({
+                                x: margin_1 +
+                                    col * (W - 2 * margin_1 - boxW) / cols,
+                                y: margin_1 +
+                                    row * (H - 2 * margin_1 - boxH) / rows,
+                                w: boxW,
+                                h: boxH
+                            });
+                        }
+                    }
+                    var best = null;
+                    var bestScore = Infinity;
+                    var _loop_3 = function (r) {
+                        if (r.x < margin_1 || r.y < margin_1 ||
+                            r.x + r.w > W - margin_1 ||
+                            r.y + r.h > H - margin_1)
+                            return "continue";
+                        // Do not cover existing name boxes
+                        if (placed_1.some(function (p) {
+                            return rectsOverlap_1(r, p.rect, 7);
+                        }))
+                            return "continue";
+                        // Do not cover any main star
+                        if (stars_1.some(function (s) { return starInBox_1(s, r); }))
+                            return "continue";
+                        // Nearest point on the name box
+                        var ex = Math.max(r.x, Math.min(star.x, r.x + r.w));
+                        var ey = Math.max(r.y, Math.min(star.y, r.y + r.h));
+                        var length_1 = Math.hypot(ex - star.x, ey - star.y);
+                        if (length_1 < 18)
+                            return "continue";
+                        // Prefer nearby boxes in uncluttered space
+                        var score = length_1 +
+                            Math.abs(r.y - star.y) * 0.12;
+                        if (score < bestScore) {
+                            bestScore = score;
+                            best = r;
+                        }
+                    };
+                    try {
+                        for (var candidates_1 = (e_5 = void 0, __values(candidates)), candidates_1_1 = candidates_1.next(); !candidates_1_1.done; candidates_1_1 = candidates_1.next()) {
+                            var r = candidates_1_1.value;
+                            _loop_3(r);
+                        }
+                    }
+                    catch (e_5_1) { e_5 = { error: e_5_1 }; }
+                    finally {
+                        try {
+                            if (candidates_1_1 && !candidates_1_1.done && (_f = candidates_1.return)) _f.call(candidates_1);
+                        }
+                        finally { if (e_5) throw e_5.error; }
+                    }
+                    // Always assign a position if possible
+                    if (!best) {
+                        best = candidates
+                            .filter(function (r) {
+                            return r.x >= margin_1 &&
+                                r.y >= margin_1 &&
+                                r.x + r.w <= W - margin_1 &&
+                                r.y + r.h <= H - margin_1;
+                        })
+                            .sort(function (a, b) {
+                            var penalty = function (r) {
+                                return placed_1.filter(function (p) {
+                                    return rectsOverlap_1(r, p.rect, 3);
+                                }).length * 10000 +
+                                    stars_1.filter(function (s) {
+                                        return starInBox_1(s, r);
+                                    }).length * 10000 +
+                                    Math.hypot(r.x + r.w / 2 - star.x, r.y + r.h / 2 - star.y);
+                            };
+                            return penalty(a) - penalty(b);
+                        })[0];
+                    }
+                    if (best) {
+                        placed_1.push(__assign(__assign({}, star), { rect: best }));
+                    }
+                };
+                try {
+                    for (var order_1 = __values(order), order_1_1 = order_1.next(); !order_1_1.done; order_1_1 = order_1.next()) {
+                        var star = order_1_1.value;
+                        _loop_1(star);
+                    }
+                }
+                catch (e_1_1) { e_1 = { error: e_1_1 }; }
+                finally {
+                    try {
+                        if (order_1_1 && !order_1_1.done && (_a = order_1.return)) _a.call(order_1);
+                    }
+                    finally { if (e_1) throw e_1.error; }
+                }
+                draw._labelCacheV6 = {
+                    key: cacheKey,
+                    labels: placed_1.map(function (p) { return ({
+                        id: p.id,
+                        rect: __assign({}, p.rect)
+                    }); })
+                };
+            }
+            // Draw coloured bent leader lines
+            placed_1.forEach(function (s) {
+                var r = s.rect;
+                var ex = Math.max(r.x, Math.min(s.x, r.x + r.w));
+                var ey = Math.max(r.y, Math.min(s.y, r.y + r.h));
+                var dx = ex - s.x;
+                var dy = ey - s.y;
+                var length = Math.hypot(dx, dy);
+                if (length <= 12)
+                    return;
+                // Start outside the star circle
+                var sx = s.x + dx / length * 10;
+                var sy = s.y + dy / length * 10;
+                ctx.beginPath();
+                ctx.moveTo(sx, sy);
+                // Bent connector
+                if (Math.abs(dx) > 28 && Math.abs(dy) > 20) {
+                    ctx.lineTo(ex, sy);
+                }
+                ctx.lineTo(ex, ey);
+                ctx.strokeStyle = s.color;
+                ctx.lineWidth = 1.25;
+                ctx.lineJoin = 'round';
+                ctx.globalAlpha = 0.8;
+                ctx.stroke();
+                ctx.globalAlpha = 1;
+            });
+            // Draw small coloured circles
+            placed_1.forEach(function (s) {
+                ctx.beginPath();
+                ctx.arc(s.x, s.y, 7, 0, Math.PI * 2);
+                ctx.strokeStyle = s.color;
+                ctx.lineWidth = 1.4;
+                ctx.stroke();
+            });
+            // Draw floating rounded name boxes
+            placed_1.forEach(function (s) {
+                var r = s.rect;
+                ctx.beginPath();
+                ctx.roundRect(r.x, r.y, r.w, r.h, 7);
+                ctx.fillStyle = 'rgba(11,22,50,0.97)';
+                ctx.fill();
+                ctx.strokeStyle = s.color;
+                ctx.lineWidth = 1.2;
+                ctx.stroke();
+                ctx.font =
+                    "600 ".concat(fontSize_1, "px \"Noto Sans Oriya\", Arial, sans-serif");
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillStyle = s.color;
+                ctx.fillText(s.name, r.x + r.w / 2, r.y + r.h / 2, r.w - 12);
+            });
+            ctx.restore();
+        }
+        // ===== END PROFESSIONAL STAR LABELS V6 =====
+        // ===== SELECTED STAR PROFESSIONAL CALLOUT =====
+        if (sel && CUR[sel] && !$('#lab').checked) {
+            var starX = CUR[sel][0];
+            var starY = CUR[sel][1];
+            var traditionalNames = {
+                polaris: 'ଧ୍ରୁବତାରା (Polaris)',
+                sirius: 'ଲୁବ୍ଧକ (Sirius)',
+                aldebaran: 'ରୋହିଣୀ (Aldebaran)'
+            };
+            var starName = traditionalNames[sel] || ST[sel].name;
+            ctx.save();
+            ctx.font = '600 16px "Noto Sans Oriya", Arial, sans-serif';
+            ctx.textBaseline = 'middle';
+            var boxW_1 = Math.min(W - 20, ctx.measureText(starName).width + 28);
+            var boxH_1 = 42;
+            var gap = 34;
+            // Try positions around the selected star
+            // Smart direction based on available screen space
+            var preferRight = starX < W / 2;
+            var preferBottom = starY < H / 2;
+            var right = [
+                [gap, -boxH_1 / 2],
+                [gap, -gap - boxH_1],
+                [gap, gap]
+            ];
+            var left = [
+                [-gap - boxW_1, -boxH_1 / 2],
+                [-gap - boxW_1, -gap - boxH_1],
+                [-gap - boxW_1, gap]
+            ];
+            var top_1 = [
+                [-boxW_1 / 2, -gap - boxH_1]
+            ];
+            var bottom = [
+                [-boxW_1 / 2, gap]
+            ];
+            var horizontal = preferRight
+                ? __spreadArray(__spreadArray([], __read(right), false), __read(left), false) : __spreadArray(__spreadArray([], __read(left), false), __read(right), false);
+            var vertical = preferBottom
+                ? __spreadArray(__spreadArray([], __read(bottom), false), __read(top_1), false) : __spreadArray(__spreadArray([], __read(top_1), false), __read(bottom), false);
+            // Try different directions automatically
+            var positions = __spreadArray(__spreadArray(__spreadArray([], __read(horizontal.slice(0, 3)), false), __read(vertical), false), __read(horizontal.slice(3)), false);
+            var allStars = IDS[sk].map(function (id) { return ({
+                x: CUR[id][0],
+                y: CUR[id][1]
+            }); });
+            var chosen = null;
+            var _loop_2 = function (dx, dy) {
+                var x_1 = starX + dx;
+                var y_1 = starY + dy;
+                if (x_1 < 8 || y_1 < 8 ||
+                    x_1 + boxW_1 > W - 8 ||
+                    y_1 + boxH_1 > H - 8)
+                    return "continue";
+                // Do not place the box over any star
+                var starOverlap = allStars.some(function (p) {
+                    return p.x > x_1 - 13 &&
+                        p.x < x_1 + boxW_1 + 13 &&
+                        p.y > y_1 - 13 &&
+                        p.y < y_1 + boxH_1 + 13;
+                });
+                if (!starOverlap) {
+                    chosen = { x: x_1, y: y_1 };
+                    return "break";
+                }
+            };
+            try {
+                for (var positions_1 = __values(positions), positions_1_1 = positions_1.next(); !positions_1_1.done; positions_1_1 = positions_1.next()) {
+                    var _c = __read(positions_1_1.value, 2), dx = _c[0], dy = _c[1];
+                    var state_1 = _loop_2(dx, dy);
+                    if (state_1 === "break")
+                        break;
+                }
+            }
+            catch (e_2_1) { e_2 = { error: e_2_1 }; }
+            finally {
+                try {
+                    if (positions_1_1 && !positions_1_1.done && (_b = positions_1.return)) _b.call(positions_1);
+                }
+                finally { if (e_2) throw e_2.error; }
+            }
+            // Keep box within canvas if space is limited
+            if (!chosen) {
+                chosen = {
+                    x: Math.max(8, Math.min(W - boxW_1 - 8, starX + gap)),
+                    y: Math.max(8, Math.min(H - boxH_1 - 8, starY - gap))
+                };
+            }
+            var x = chosen.x;
+            var y = chosen.y;
+            // Find closest point on the box
+            var endX = Math.max(x, Math.min(starX, x + boxW_1));
+            var endY = Math.max(y, Math.min(starY, y + boxH_1));
+            var vx = endX - starX;
+            var vy = endY - starY;
+            var length_2 = Math.hypot(vx, vy);
+            // Golden circle around selected star
+            ctx.beginPath();
+            ctx.arc(starX, starY, 13, 0, Math.PI * 2);
+            ctx.strokeStyle = '#ffd479';
+            ctx.lineWidth = 2;
+            ctx.shadowColor = '#ffd479';
+            ctx.shadowBlur = 10;
+            ctx.stroke();
+            ctx.shadowBlur = 0;
+            // Line begins outside the golden circle
+            if (length_2 > 16) {
+                ctx.beginPath();
+                ctx.moveTo(starX + vx / length_2 * 17, starY + vy / length_2 * 17);
+                ctx.lineTo(endX, endY);
+                ctx.strokeStyle = 'rgba(255,212,121,0.85)';
+                ctx.lineWidth = 1.2;
+                ctx.stroke();
+            }
+            // Rounded dark-blue name box
+            ctx.beginPath();
+            ctx.roundRect(x, y, boxW_1, boxH_1, 9);
+            ctx.fillStyle = 'rgba(15,27,62,0.96)';
+            ctx.fill();
+            ctx.strokeStyle = 'rgba(255,212,121,0.65)';
+            ctx.lineWidth = 1;
+            ctx.stroke();
+            // Star name
+            ctx.textAlign = 'center';
+            ctx.fillStyle = '#ffe4a3';
+            ctx.fillText(starName, x + boxW_1 / 2, y + boxH_1 / 2);
+            ctx.restore();
+        }
+        // ===== END SELECTED STAR CALLOUT =====
+        if (mode === 'build' && B.done) {
+            var ids = __spreadArray([], __read(new Set(CONS[B.cid].L.flat())), false), cx = ids.reduce(function (a, i) { return a + CUR[i][0]; }, 0) / ids.length, cy = Math.min.apply(Math, __spreadArray([], __read(ids.map(function (i) { return CUR[i][1]; })), false)) - 18;
+            txt(CONS[B.cid].n, cx, cy, GD, 'center');
+        }
+        PA = PA.filter(function (p) { return (p.l -= DT * .8) > 0; });
+        PA.forEach(function (p) { p.x += p.vx * DT; p.y += p.vy * DT; p.vy += 130 * DT; ctx.globalAlpha = p.l; ctx.fillStyle = p.c; ctx.shadowColor = p.c; ctx.shadowBlur = 8; ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, 7); ctx.fill(); });
+        ctx.globalAlpha = 1;
+        ctx.shadowBlur = 0;
+        // Compass labels sit BELOW the raised left panel in both missions.
+        if (mode === 'pole' || mode === 'sirius') {
+            var labelY = H - 19;
+            var leftX = 18;
+            var rightX = W - 18;
+            if (mode === 'pole') {
+                // Facing North: West is left, East is right.
+                txt('← ପଶ୍ଚିମ (West)', leftX, labelY, CY);
+                txt('ପୂର୍ବ (East) →', rightX, labelY, CY, 'right');
+            }
+            else {
+                // Facing South towards Orion: East is left, West is right.
+                txt('← ପୂର୍ବ (East)', leftX, labelY, CY);
+                txt('ପଶ୍ଚିମ (West) →', rightX, labelY, CY, 'right');
+            }
+        }
+    }
+    var last = 0;
+    var tmv = function () { return $('#tmv').textContent = Math.round(T * 10) / 10 + ' ଘଣ୍ଟା (hours)'; }, pb = function () { return $('#play').textContent = play ? '❚❚ ଅଟକାଅ (Pause)' : '▶(Play)'; };
+    var previousPaint = 0;
+    function frame(ts) {
+      requestAnimationFrame(frame);
+      if (document.hidden) { last = ts; return; }
+      /* A single initial sky paint is enough behind the opaque welcome screen. */
+      if (!$('#intro').hidden && previousPaint) { last = ts; return; }
+      /* Limit costly whole-canvas paints on Android 9; time stays continuous. */
+      if (LOW_POWER && previousPaint && ts - previousPaint < 40) return;
+      previousPaint = ts;
+      DT = Math.min(.05, (ts - last) / 1000 || 0); last = ts; if (play) {
+        T = Math.min(12, T + DT * .9);
+        $('#tm').value = T;
+        tmv();
+        if (T >= 12) {
+            play = false;
+            pb();
+        }
+    } draw(ts); }
+    function setMode(m) {
+        var _a;
+        draggingLine = false;
+        mode = m;
+        T = 0;
+        play = false;
+        sel = null;
+        // Reset star names when changing missions
+        $('#lab').checked = false;
+        msg('');
+        pb();
+        $('#tm').value = 0;
+        tmv();
+        info(null);
+        ui();
+        (_a = document.querySelector('.observatory-dashboard')) === null || _a === void 0 ? void 0 : _a.dispatchEvent(new Event('observatory:missionchange'));
+    }
+    function reset() { draggingLine = false; if (mode === 'pole')
+        SS.pole = { step: 0, picks: [], k: 1, freeTip: null, done: false }; if (mode === 'sirius')
+        SS.sirius = { step: 0, k: 1, freeTip: null, done: false }; if (mode === 'build') {
+        B.drawn.clear();
+        B.first = null;
+        B.done = false;
+    } T = 0; play = false; pb(); $('#tm').value = 0; tmv(); msg(''); ui(); }
+    Object.keys(MN).forEach(function (m) { var b = document.createElement('button'); b.dataset.m = m; b.innerHTML = '<b>' + MN[m][0] + '<span class="ck"></span></b><small>(' + MN[m][1] + ')</small>'; b.onclick = function () { return setMode(m); }; $('#tabs').appendChild(b); });
+    Object.keys(CONS).forEach(function (c) { var b = document.createElement('button'); b.dataset.c = c; b.textContent = CONS[c].n; b.onclick = function () { B.cid = c; B.drawn.clear(); B.first = null; B.done = false; T = 0; play = false; pb(); msg(''); ui(); }; $('#consRow').appendChild(b); });
+    // Free-direction drag: pupils steer the blue handle anywhere, no preset slider.
+    var draggingLine = false, dragPointer = null;
+    var canvasPoint = function (e) {
+        var r = cv.getBoundingClientRect();
+        return [(e.clientX - r.left) * W / r.width, (e.clientY - r.top) * H / r.height];
+    };
+    function moveLineTo(point) {
+        var g = geo(mode);
+        if (!g)
+            return;
+        // Both x and y follow the pointer: full 360-degree movement.
+        var x = Math.max(10, Math.min(W - 10, point[0]));
+        var y = Math.max(10, Math.min(H - 10, point[1]));
+        SS[mode].freeTip = [(x - g.p1[0]) / g.L, (y - g.p1[1]) / g.L];
+    }
+    /* A press is not a star tap until release: movement pans instead. */
+    var skyDrag = null, pinch = null, ignorePointerUntil = 0;
+    cv.addEventListener('pointerdown', function (e) {
+        if (pinch || performance.now() < ignorePointerUntil) return;
+        var point = canvasPoint(e);
+        var m = (mode === 'pole' || mode === 'sirius') ? SS[mode] : null;
+        var g = m && m.step === 1 && !m.done ? geo(mode) : null;
+        if (g && Math.hypot(point[0] - g.tip[0], point[1] - g.tip[1]) < 30) {
+            draggingLine = true; dragPointer = e.pointerId;
+            if (cv.setPointerCapture) try { cv.setPointerCapture(e.pointerId); } catch (ignore) {}
+            moveLineTo(point); e.preventDefault(); return;
+        }
+        skyDrag = {id:e.pointerId, x:point[0], y:point[1], lastX:point[0], lastY:point[1], moved:false};
+        if (cv.setPointerCapture) try { cv.setPointerCapture(e.pointerId); } catch (ignore) {}
+        e.preventDefault();
+    });
+    cv.addEventListener('pointermove', function (e) {
+        if (pinch || performance.now() < ignorePointerUntil) return;
+        var point = canvasPoint(e);
+        if (draggingLine && e.pointerId === dragPointer) { moveLineTo(point); e.preventDefault(); return; }
+        if (!skyDrag || skyDrag.id !== e.pointerId) return;
+        if (Math.hypot(point[0]-skyDrag.x,point[1]-skyDrag.y) > 9) skyDrag.moved=true;
+        if (skyDrag.moved) {
+            skyPanX += point[0]-skyDrag.lastX; skyPanY += point[1]-skyDrag.lastY;
+            skyLimit(); cv.classList.add('sky-panning');
+        }
+        skyDrag.lastX=point[0]; skyDrag.lastY=point[1];
+        e.preventDefault();
+    });
+    function endLineDrag(e) {
+        if (draggingLine && e.pointerId === dragPointer) {
+            var point = canvasPoint(e);
+            moveLineTo(point); draggingLine=false; dragPointer=null;
+            if (cv.hasPointerCapture && cv.hasPointerCapture(e.pointerId)) cv.releasePointerCapture(e.pointerId);
+            check(point); return;
+        }
+        if (skyDrag && skyDrag.id === e.pointerId) {
+            var pending=skyDrag; skyDrag=null; cv.classList.remove('sky-panning');
+            if (cv.hasPointerCapture && cv.hasPointerCapture(e.pointerId)) cv.releasePointerCapture(e.pointerId);
+            if (!pending.moved && !pinch && performance.now() >= ignorePointerUntil) {
+                var pt=canvasPoint(e); tap(pt[0],pt[1]);
+            }
+        }
+    }
+    cv.addEventListener('pointerup', endLineDrag);
+    cv.addEventListener('pointercancel', function(e) {
+        if(e.pointerId===dragPointer){draggingLine=false;dragPointer=null;}
+        if(skyDrag && skyDrag.id===e.pointerId){skyDrag=null;cv.classList.remove('sky-panning');}
+    });
+    /* Explicit two-finger touch handler works with the legacy PointerEvent polyfill. */
+    function touchPoint(t) { var r=cv.getBoundingClientRect(); return [(t.clientX-r.left)*W/r.width,(t.clientY-r.top)*H/r.height]; }
+    function touchPair(e) {
+        var a=touchPoint(e.touches[0]), b=touchPoint(e.touches[1]);
+        return {x:(a[0]+b[0])/2,y:(a[1]+b[1])/2,d:Math.max(10,Math.hypot(a[0]-b[0],a[1]-b[1]))};
+    }
+    cv.addEventListener('touchstart', function(e){
+        if(e.touches.length>=2){pinch=touchPair(e);skyDrag=null;draggingLine=false;dragPointer=null;ignorePointerUntil=performance.now()+350;e.preventDefault();}
+    }, {passive:false});
+    cv.addEventListener('touchmove', function(e){
+        if(!pinch || e.touches.length<2)return;
+        var now=touchPair(e);
+        skyZoomAt(skyZoom*now.d/pinch.d,pinch.x,pinch.y);
+        skyPanX+=now.x-pinch.x;skyPanY+=now.y-pinch.y;skyLimit();
+        pinch=now;ignorePointerUntil=performance.now()+350;e.preventDefault();
+    }, {passive:false});
+    cv.addEventListener('touchend', function(e){if(pinch && e.touches.length<2){pinch=null;ignorePointerUntil=performance.now()+350;skyDrag=null;}}, {passive:false});
+    cv.addEventListener('touchcancel', function(){pinch=null;skyDrag=null;ignorePointerUntil=performance.now()+350;}, {passive:false});
+    cv.addEventListener('wheel',function(e){
+        var pt=canvasPoint(e); skyZoomAt(skyZoom*(e.deltaY<0?1.12:1/1.12),pt[0],pt[1]);e.preventDefault();
+    },{passive:false});
+    $('#skyPlus').onclick=function(){skyZoomAt(skyZoom*1.25,W/2,H/2);};
+    $('#skyMinus').onclick=function(){skyZoomAt(skyZoom/1.25,W/2,H/2);};
+    $('#skyReset').onclick=skyResetView;
+    $('#tm').oninput = function (e) { T = +e.target.value; tmv(); };
+    $('#play').onclick = function () { if (T >= 12)
+        T = 0; play = !play; pb(); };
+    $('#reset').onclick = reset;
+    $('#hint').onclick = function () { var ids = []; if (mode === 'pole')
+        ids = SS.pole.step ? ['polaris'] : ['dubhe', 'merak'];
+    else if (mode === 'sirius')
+        ids = SS.sirius.step ? ['sirius'] : BELT;
+    else {
+        var p = CONS[B.cid].L.find(function (q) { return !B.drawn.has(__spreadArray([], __read(q), false).sort().join('|')); });
+        if (p)
+            ids = p;
+    } flash = { ids: ids, until: performance.now() + 2600 }; };
+    $('#go').onclick = function () { var _a; $('#intro').hidden = true; $('#skyNav').hidden = false; beep(660, .15); (_a = document.querySelector('.observatory-dashboard')) === null || _a === void 0 ? void 0 : _a.dispatchEvent(new Event('observatory:missionchange')); };
+    addEventListener('resize', fit);
+    fit();
+    pb();
+    tmv();
+    info(null);
+    ui();
+    requestAnimationFrame(frame);
+    // ===== Floating panels: close button only, drag from blank header =====
+    // Independent from the stars and mission animation.
+    (function initFloatingPanels() {
+        var e_6, _a;
+        var board = document.querySelector('.observatory-dashboard');
+        if (!board)
+            return;
+        var specs = [
+            ['.tabs', 'EXPLORE'], ['.hero', 'Title & score'],
+            ['.panel', 'Controls'], ['.guide', 'Teacher advice'],
+            ['.sky-nav', 'Zoom controls']
+        ];
+        var groups = [];
+        var front = 10;
+        var _loop_4 = function (selector, title) {
+            var el = board.querySelector(selector);
+            if (!el)
+                return "continue";
+            el.classList.add('float-panel');
+            var closer = document.createElement('button');
+            closer.type = 'button';
+            closer.className = 'float-close';
+            closer.textContent = '×';
+            closer.setAttribute('aria-label', 'Close ' + title);
+            closer.title = 'Close ' + title;
+            el.appendChild(closer);
+            groups.push({ el: el, title: title });
+            closer.addEventListener('click', function (event) {
+                event.stopPropagation();
+                el.hidden = true;
+                refreshRestore();
+            });
+            var drag = null;
+            el.addEventListener('pointerdown', function (event) {
+                if (event.button !== 0 || event.target.closest('button,input,select,textarea,label,a,[role="button"]'))
+                    return;
+                var box = el.getBoundingClientRect();
+                // Top 30px is a clean invisible grab area. The entire title card is draggable.
+                var headerOnly = el.matches('.tabs,.panel,.guide,.sky-nav');
+                if (headerOnly && event.clientY > box.top + 31)
+                    return;
+                var boardRect = board.getBoundingClientRect();
+                el.style.left = (box.left - boardRect.left) + 'px';
+                el.style.top = (box.top - boardRect.top) + 'px';
+                el.style.right = 'auto';
+                el.style.bottom = 'auto';
+                el.style.zIndex = String(++front);
+                drag = { id: event.pointerId, x: event.clientX, y: event.clientY, left: box.left - boardRect.left, top: box.top - boardRect.top };
+                el.classList.add('is-moving');
+                el.setPointerCapture(event.pointerId);
+                event.preventDefault();
+            });
+            el.addEventListener('pointermove', function (event) {
+                if (!drag || event.pointerId !== drag.id)
+                    return;
+                var maxX = Math.max(0, board.clientWidth - el.offsetWidth);
+                var maxY = Math.max(0, board.clientHeight - el.offsetHeight);
+                el.style.left = Math.max(0, Math.min(maxX, drag.left + event.clientX - drag.x)) + 'px';
+                el.style.top = Math.max(0, Math.min(maxY, drag.top + event.clientY - drag.y)) + 'px';
+            });
+            var finish = function (event) {
+                if (!drag || event.pointerId !== drag.id)
+                    return;
+                drag = null;
+                el.classList.remove('is-moving');
+                if (el.hasPointerCapture(event.pointerId))
+                    el.releasePointerCapture(event.pointerId);
+            };
+            el.addEventListener('pointerup', finish);
+            el.addEventListener('pointercancel', finish);
+        };
+        try {
+            for (var specs_1 = __values(specs), specs_1_1 = specs_1.next(); !specs_1_1.done; specs_1_1 = specs_1.next()) {
+                var _b = __read(specs_1_1.value, 2), selector = _b[0], title = _b[1];
+                _loop_4(selector, title);
+            }
+        }
+        catch (e_6_1) { e_6 = { error: e_6_1 }; }
+        finally {
+            try {
+                if (specs_1_1 && !specs_1_1.done && (_a = specs_1.return)) _a.call(specs_1);
+            }
+            finally { if (e_6) throw e_6.error; }
+        }
+        // Top-left panel manager. The menu remains available even when every box is hidden.
+        var restore = document.createElement('button');
+        restore.className = 'panel-restore';
+        restore.type = 'button';
+        restore.textContent = '☷ Panels';
+        restore.setAttribute('aria-expanded', 'false');
+        restore.setAttribute('aria-label', 'Open floating panels menu');
+        var menu = document.createElement('div');
+        menu.className = 'panel-restore-menu';
+        menu.hidden = true;
+        board.append(restore, menu);
+        function refreshRestore() {
+            var e_7, _a;
+            menu.replaceChildren();
+            var _loop_5 = function (group) {
+                var btn = document.createElement('button');
+                btn.type = 'button';
+                btn.textContent = (group.el.hidden ? '＋  ' : '✓  ') + group.title;
+                btn.setAttribute('aria-pressed', String(!group.el.hidden));
+                btn.onclick = function () {
+                    if (group.el.hidden) {
+                        group.el.hidden = false;
+                        group.el.style.zIndex = String(++front);
+                    }
+                    else
+                        group.el.hidden = true;
+                    menu.hidden = true;
+                    restore.setAttribute('aria-expanded', 'false');
+                    refreshRestore();
+                };
+                menu.appendChild(btn);
+            };
+            try {
+                for (var groups_1 = __values(groups), groups_1_1 = groups_1.next(); !groups_1_1.done; groups_1_1 = groups_1.next()) {
+                    var group = groups_1_1.value;
+                    _loop_5(group);
+                }
+            }
+            catch (e_7_1) { e_7 = { error: e_7_1 }; }
+            finally {
+                try {
+                    if (groups_1_1 && !groups_1_1.done && (_a = groups_1.return)) _a.call(groups_1);
+                }
+                finally { if (e_7) throw e_7.error; }
+            }
+        }
+        function showTeachingPanels() {
+            var e_8, _a;
+            try {
+                // Keep essential guidance and zoom controls visible at the start of EVERY mission.
+                // EXPLORE and Title remain optional via the Panels menu.
+                for (var groups_2 = __values(groups), groups_2_1 = groups_2.next(); !groups_2_1.done; groups_2_1 = groups_2.next()) {
+                    var group = groups_2_1.value;
+                    var essential = group.el.matches('.panel,.guide,.sky-nav');
+                    group.el.hidden = !essential;
+                    if (essential)
+                        group.el.style.zIndex = String(++front);
+                }
+            }
+            catch (e_8_1) { e_8 = { error: e_8_1 }; }
+            finally {
+                try {
+                    if (groups_2_1 && !groups_2_1.done && (_a = groups_2.return)) _a.call(groups_2);
+                }
+                finally { if (e_8) throw e_8.error; }
+            }
+            menu.hidden = true;
+            restore.setAttribute('aria-expanded', 'false');
+            refreshRestore();
+        }
+        // First page: no floating boxes or panel manager, only the intro.
+        // Once Start is pressed, the mission event opens Controls + Teacher advice + Zoom.
+        board.addEventListener('observatory:missionchange', function () {
+            restore.hidden = false;
+            showTeachingPanels();
+        });
+        groups.forEach(function (group) { group.el.hidden = true; });
+        restore.hidden = true;
+        menu.hidden = true;
+        refreshRestore();
+        restore.addEventListener('click', function (event) {
+            event.stopPropagation();
+            refreshRestore();
+            menu.hidden = !menu.hidden;
+            restore.setAttribute('aria-expanded', String(!menu.hidden));
+        });
+        board.addEventListener('pointerdown', function (event) {
+            if (!menu.hidden && !menu.contains(event.target) && !restore.contains(event.target)) {
+                menu.hidden = true;
+                restore.setAttribute('aria-expanded', 'false');
+            }
+        });
+        refreshRestore();
+    })();
+    // ===== END Floating panels =====
+})();
+
+</script>
+</body>
+</html>
